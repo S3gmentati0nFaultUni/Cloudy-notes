@@ -1,0 +1,40 @@
+\section{Introduction}
+First, we want to focus on the concept of a distributed system, which is, intuitively, a complex mechanism with many moving parts. The parts can move on their own or according to the plans of a master that is keeping everything under control. We will see a couple of different definitions that try to encapsulate what distributed systems are all about. \\
+A distributed system can be seen as two or more computers, each one with its own local memory and processor, connected via networking communication. \\
+Basically this means that a distributed system is none other than a group of computer communicating via the exchange of messages. \\
+Distribution can be at three different levels:
+\begin{itemize}
+    \item Hardware
+    \item Data, which, to be processed, needs to be replicated and partitioned
+    \item Control
+\end{itemize}
+What is the difference between centralized and distributed systems? \\
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{| c | c |}
+        \hline
+        \multicolumn{2}{| c |}{Differences}\\ 
+        \hline
+        Distributed & Centralized\\
+        \hline
+        Autonomous components & Non autonomous components\\
+        \hline
+        Heterogeneous technology & Most of the time build using homogeneous technology\\
+        \hline
+        Components can be used exclusively & multiple users share the same resources all times\\
+        \hline
+        Executed in concurrent processes & single point of control and of failure\\
+        \hline
+        Multiple points of failure & ;D\\
+        \hline
+    \end{tabular}
+\end{table}
+An important question needs to find an answer, why do we bother with distributed systems? Is the added complexity really beneficial? \\
+The answer is, obviously, yes (to some extent). 
+\begin{itemize}
+    \item Distributed systems allow for functional separation between the agents in action.
+    \item The model goes toe to toe with the conception of information we have today.
+    \item We can distribute computational load over many devices instead of having only one node to complete the task. This is really beneficial for complex tasks.
+    \item Distributed systems are very reliable
+    \item Sharing a pool of resources with many individuals make them very economical because we don't need to buy many for each one, we just need many resources for many people.
+\end{itemize}
