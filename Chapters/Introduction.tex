@@ -38,3 +38,67 @@ The answer is, obviously, yes (to some extent).
     \item Distributed systems are very reliable
     \item Sharing a pool of resources with many individuals make them very economical because we don't need to buy many for each one, we just need many resources for many people.
 \end{itemize}
+Another good definition of a distributed system is the following:
+\begin{center}
+    \textit{"A distributed system is a collection of autonomous computing elements that appears to its users as a single coherent system"}
+\end{center}
+This means that a distributed system is basically a network of very different devices, each with its own hardware, its own os, etc... And it appears as if it was a single and coherent entity. \\
+To make this possible we have to mount a middleware layer on top of the operating system of each of the machines, this middleware will filter requests coming from the outside and translate them in something that can be understood by the underlying operating system. The process, although, is completely transparent to the user. \\
+To be mor specific, what are the tasks that a middleware should be able to handle?
+\begin{itemize}
+    \item It should manage resources offering its applications to efficiently share and deploy those resources across a network.
+    \item It should offer facilities for inter application communication.
+    \item It should handle security.
+    \item It should handle accounting services.
+    \item It should mask the recovery failures (not trivial).
+\end{itemize}
+Now, before analyzing some practical examples of distributed systems, let's consider some very important design goals that should be considered when handling these models.
+\subsection{Transparency}
+Transparency is a very important concept in computer science, just think about how transparency plays a role in object oriented programming, in the field of distributed computing even more so. We would like to have a system that is easy to use and can easily hid what lies on the other side. \\
+Unfortunately transparency is very hard to achieve (full trainsparency is even impossible), we ended up defining a series of types of transparency that have different meanings:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{| c | c |}
+        \hline
+        \multicolumn{2}{| c |}{Some types of transparency}\\ 
+        \hline
+        Transparency & Description\\
+        \hline
+        Access & Hide differences in data representation and how an object is accessed\\
+        \hline
+        Location & Hide where an objects is located\\
+        \hline
+        Relocation & Hide that an object may move to another location\\
+        \hline
+        Replication & Hide that an object is replicated\\
+        \hline
+        Concurrency & Hide that an object may be shared by several independent users\\
+        \hline
+        Failure & Hide the failure and recover of an object\\
+        \hline
+    \end{tabular}
+\end{table}
+Needless to say that having so many moving parts while trying to hide one or more of the above details can make programming and debugging a distributed system a very complex process. \\
+\subsection{Openness and Scalability}
+A distributed (or operating) system is open when anybody is able to make modifications to the modules that compose it, here is very important to stress a point. Rendering a distributed system open doesn't mean handing all of your personal code over to people, you are just required to make it so that anyone can make modifications without touching the core logic. This is the logic of separating the policy from the mechanism. \\
+A silly example can be: If I produced some kind of remote communication service that uses certain protocols, anyone should be able to choose another protocol to work with and attatch his own code to mine so that it all works seamlessly. \\
+A distributed system should always be scalable, there are three different ways to scale a system:
+\begin{itemize}
+    \item Scale in size (number of users or/and processes)
+    \item Geographical Scalability
+    \item Administrative domanis: The system spans multiple administrative domains
+\end{itemize}
+When scaling is needed we can either scale up, by basically improving the singular hardware specs of the various machines, or scale out, by expanding the fleet of machines that compose the distributed system. \\
+One of the classical problems of scaling out is the replication issue, where we have multiple copies of the same file over many machines in the network. This has a series of effects, first and foremost inconsistency, we usually have to keep track of whichever is the most up to date version of the file. Secondly we have to decide how to handle them, because inconsistencies will surely be present. We can either, as an example, update all of the various copies of the file whenever it changes, or we can keep different versions of the file in the network and, whenever prompted, look for the most up to date currently available.
+\subDistance
+The following are a series of false assumptions that developers tend to make when modelling a distributed system:
+\begin{itemize}
+    \item The network is reliable.
+    \item The network is secure.
+    \item The network is homogeneous.
+    \item The topology does not change.
+    \item Latency is zero.
+    \item Bandwidth is infinite.
+    \item Transport cost is zero.
+    \item One single administrator.
+\end{itemize}
