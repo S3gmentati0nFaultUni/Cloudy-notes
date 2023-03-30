@@ -90,7 +90,7 @@ A distributed system should always be scalable, there are three different ways t
 \end{itemize}
 When scaling is needed we can either scale up, by basically improving the singular hardware specs of the various machines, or scale out, by expanding the fleet of machines that compose the distributed system. \\
 One of the classical problems of scaling out is the replication issue, where we have multiple copies of the same file over many machines in the network. This has a series of effects, first and foremost inconsistency, we usually have to keep track of whichever is the most up to date version of the file. Secondly we have to decide how to handle them, because inconsistencies will surely be present. We can either, as an example, update all of the various copies of the file whenever it changes, or we can keep different versions of the file in the network and, whenever prompted, look for the most up to date currently available.
-\subDistance
+\subSpace
 The following are a series of false assumptions that developers tend to make when modelling a distributed system:
 \begin{itemize}
     \item The network is reliable.
@@ -102,3 +102,40 @@ The following are a series of false assumptions that developers tend to make whe
     \item Transport cost is zero.
     \item One single administrator.
 \end{itemize}
+\subsection{Types of distributed systems}
+We will now explore two different models for distributed systems.
+\subsubsection{High performance distributed computing}
+High performance distirbuted computing is a very cool field to explore because it's the founding idea of current supercomputers, which dispose of various computing modules that are employed based on the type of load that is hitting the system. \\
+We usually talk about Cluster computing, in which we have similar workstations connected to a high-speed network, each machine is running the same os, or Grid Computing, which is an heterogeneous network of machines dispersed across several organ. \\
+Cloud computing is another technique for high performance distributed computing, but it's meant for prosumer use and that is because a cloud workstation can be bought for relatively cheap, employed right away and extended at the client's leisure.
+\subsubsection{Distributed information systems}
+Distributed information systems allow for resilient backup of data. This model is based on the concept of transaction, which is an event that involves a client and a server, for the transaction to take place everything needs to go according to plan (just like an economical transaction). \\
+Transactions must follow the ACID properties:
+\begin{itemize}
+    \item Atomic: The transaction must be indivisible.
+    \item Consistent: The transaction must not violate system invariants.
+    \item Isolated: Concurrent transactions do not interfere with each other.
+    \item Durable: Once a transaction commits, changes are permanent.
+\end{itemize}
+Usually transactions are constructed as a group of subtransactions that run in parallel. This division provides a natural way of distributing a transaction across multiple machines.
+\subsubsection{Pervasive systems}
+Pervasive systems are networks composed of nodes that are often small, mobile and embedded in larger systems, characterized by the fact that the system naturally blends into the user's environment. In the field of pervasive systems we have three different categories:
+\begin{itemize}
+    \item Ubiquitous computing: Pervasive and continuously present
+    \item Mobile computing: Pervasive but inherently mobile
+    \item Sensor networks
+\end{itemize}
+\textbf{Uniquitous computing} \\
+The core requirements for Ubiquitous computing systems are the following:
+\begin{itemize}
+    \item Distribution: The device and network are accessible in a transparent manner (even though they are distributed).
+    \item Interaction: The system is highly unobtrusive.
+    \item Context awareness: To optimize the interaction the system is aware of a user's context.
+    \item Autonomy: Devices must be autonomous.
+    \item The system can handle a wide range of dynamic actions and interactions.
+\end{itemize}
+\textbf{Mobile computing} \\
+A distributed system in which there are many different devices with very different architectures, all connected via wireless and in movement. Since the setting for the connection is really complex it's essentially a disruption-tolerant network. \\
+\textbf{Sensor network} \\
+A sensor network should be a network of many sensors implied in different scenarios (the first that comes to mind is a Nuclear implant sensor network), the devices themselves are very simple. Essentially this kind of sensor network is organized as a distributed database, sensors send data to the operator, store data and respond to queries.
+The nodes have very low amount of memory and low computing capabilities, they store just enough to make simple computations and the rest is left to a more capable node in the network. We can think about a more centralized architecture (aka the nuclear implant above) or a more distributed scenario (IoT).
