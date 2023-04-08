@@ -10,4 +10,101 @@ There are different ways to do virtualization, a couple of interfaces to be virt
     \item Native virtual machine monitor in which we have low level instructions along with barebones minimal operating system
     \item Hosted virtual machine monitor in which we have low level instructions but most of the work is delegated to a full fladged OS.
 \end{itemize}
-    
+Now we will talk about virtualization and everything that revolves around it more in detail. \\
+First virtualization is an activity aiming to create replacements for real resources, which have the same functionalities and external interfaces of their counterpart, but different attributes. \\
+The concept of emulation and simulation are linked to virtualization, the three concepts mean different things. \\
+\begin{itemize}
+    \item Emulation: We execute a system like it is another system. We run os, API and functions on a machine which they have not been developed for.
+    \item Simulation: An application allowing to execute old programs defined for different platforms on modern machines and it replicates the behaviour of a system. It's like a software emulation. \\
+    Emulation is slower but precise while simulation is fast but less precise. We use simulation (or software emulation, to run old games on our smartphones).
+    \item High level emulation is an intermediate between emulation and simulation, they recreate the functionalities of an emulated system using similar or equivalent functions in the emulating system.
+    \item Virtualization: the technique for using resources and devices in a functional way without considering their physical layout. \\
+    In the world of virtualization a Virtual Machine is a container with software based CPU, RAM and HDD and network connection. We have a certain level of transparency because an OS or an application do not distinguish between a virtual and a physical machine.
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{./Images/summary_virtualization.png}
+    \caption{Summary of the principal characteristics of virtualization techniques}
+\end{figure}
+Now we will focus on each one separately.
+\subsection{Virtualization}
+Virtualization is compatible with x86/64 machines, each has a full and dedicated environment and each machine is isolated from each other just like physical separation. \\
+Virtualization was created to solve some issues:
+\begin{itemize}
+    \item Too many servers but small workloads
+    \item Old hardware does not work
+    \item Infrastructural requirements are always increasing (many independent servers)
+    \item Small flexibility in shared environments
+\end{itemize}
+Virtualization allows to keep the costs low for resources while managing them efficiently and keeping the necessary computational power. We can, in fact, use a single hardware server as a multitude of virtual servers. \\
+If a cloud solution has been deployed well we can use virtualization to increase resource usage and enable dynamic sharing of resource pools. We can even react to particular situations because virtualization allows us to have a single consolidated view of each resource of the network which can be easily accessed, moved and managed from wherever. \\
+Other reasons that support the choice of going virtualized are the following:
+\begin{itemize}
+    \item Better performance
+    \item transparency
+    \item Heterogeneity
+    \item portability
+    \item Interoperability
+    \item Green IT (with the same amount of hardware we satisfy more people)
+\end{itemize}
+Virtualization can be used in many different scenarios, it's heavily used in cloud-based applications because we can, for example, virtualize resources into pools and assign them to users based on the fee they pay and on their workload. \\
+We can also use virtualization to deploy microservice-based applications by putting every microservice into its own virtualized container. \\
+As a last example we can use virtualization to keep our systems secure, with a virtualized environment we can test code and / or applications to see that they work / do not contain viruses before downloading them on our own machine. \\
+A couple of reasons against virtualization are the follwing:
+\begin{itemize}
+    \item Analysis and planning: building an application or a service that stands on top of a virtualized environment is easy enough, porting something to a virtualized environment a completely different workflow. A lot of planning and study has to go into the process, the staff needs to be trained and a lot of risk analysis has to be done.
+    \item Adaptation and post adaptation: A lof of evaluation needs to go into studying the relaiability, the performance, the efficiency and the security of the virtualized environment that will be used.
+    \item Maintenance: Maintenance must be kept in mind as well, mostly scalability and security.
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{./Images/virtualization_components.png}
+    \caption{The structure of a virtualizer}
+\end{figure}
+Now we'll take a look at the structure of a virtualizer. \\
+The components are the following: \\
+\smallSpace
+\textbf{Hypervisor} \\
+The Hypervisor is a component that interacts with the virtual machine and with the host, it allows for multiple OSs running on the same computer. Beware! In the case of an operating system like windows it's important to keep in mind that turning on the Hypervisor and having a virtual machine manager like Virtual Box or VMware may cause instabilities. \\
+\smallSpace
+\textbf{Virtual machine monitor}\\
+It's the application component realizing virtualization. \\
+\smallSpace
+\textbf{Guest OS} \\
+\smallSpace
+\textbf{Host OS} \\
+\smallSpace
+\textbf{management Server} \\
+It's a virtualization platform.
+\smallSpace
+\textbf{Management Console} \\
+Provides access to the virtualization management interface. \\
+\subSpace
+A cool factoid about virtualization is that there is a non-mandatory constraint that requires that a statistically relevant percentage of instructions inside a virtualized environment should be executed without virtualization. Abiding to this rule will guarantee better efficiency of the virtual machine. \\
+Now we will consider a couple of different virtualization models. 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{./Images/virtualization_stacks.png}
+    \caption{Various virtualization models}
+\end{figure}
+When doing \textbf{Full emulation}, we emulate every aspect of a computer and it allows to execute an unmodified guest OS on a completely different host architecture. \\
+\miniSpace
+\textbf{Full virtualization} [4a], instead, only emulates the necessary hardware, allowing the isolated execution of a guest OS, the only difference is that the guest OS must be designed for the same architecture. \\
+\miniSpace
+If we need to run software for MIPS-32 architecture we are going to need to emulate the whole machine because we cannot run a virtual machine made for something like that on x86. \\
+\miniSpace
+Nowadays processors come with instructions that allow to provide the virtual machine with some true hardware (\textbf{Hardware assisted virtualization} [4c]). That boosts machine performance with full virtualization. \\
+\miniSpace
+\textbf{Paravirtualization} [4b] is another form of virtualization where the virtual machine makes available an API to extend the guest OS (the guest OS has to be modified), the extension consists of hypercall implementation which is a virtualized version of a system call. Basically it's a way of opening a direct line of communication between the Guest OS and the Hypervisor below. \\
+\miniSpace
+In \textbf{OS-level virtualization} [4d] the virtual machine manager partitions hardware resources of host OS between the guests. The host OS guarantees the isolation of multiple user space instances. \\
+\miniSpace
+In \textbf{Application level virtualization} [4e] we have a virtualized application that runs in a safe and enclosed environment, this avoids risky memory overwrites that may break the operating system. This also allows for better portability of code. \\
+\smallSpace
+Virtualization can either be native or non-native, if it's native is fast because guest OS and host OS coincide and, probably, the Hypervisor is very low level and very efficient. In the other case we are working with a slower form of virtualization but it allows to have different operating systems. \\
+
+\subsection{Virtualization Software}
+Now we will se a couple of specific solutions for hardware virtualization.
+\subsubsection{VMware ESXi}
+\subsubsection{Xen}
+\subsubsection{KVM}
