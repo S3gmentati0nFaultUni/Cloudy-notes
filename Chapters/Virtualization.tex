@@ -106,5 +106,60 @@ Virtualization can either be native or non-native, if it's native is fast becaus
 \subsection{Virtualization Software}
 Now we will se a couple of specific solutions for hardware virtualization.
 \subsubsection{VMware ESXi}
+The first virtualization platform that we'll check out is vSphere, which is an ecosystem including different virtualization solutions.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{Images/ESXi.png}
+    \caption{VMware vSphere}
+\end{figure}
+vCenter is a management middleware layied on top of the virtualized environment and basically allows full control over the resources. This solution allows to control up to 2000 hosts and 35000 virtual machines. \\
+ESXi is the vSphere's hypervisor and gives the fundamentals to build and manage a virtualized IT infrastructure. It's a bare-metal hypervisor, installed directly on server hardware and takes up only 150MB. It partitions the physical server into sveral virtual servers, each virtual machine is a complete system on its own. \\
+Virtual machines can be kept safe via powerful encryption systems and role based access control.
 \subsubsection{Xen}
+Xen is a Paravirtualization hypervisor released under GPL2 license, with paravirtualization we can expect performance similar to a non-virtualized machine. It can scale up to monstrous numbers: 4095 host CPUs with 16TB of RAM; it's important to note that using paravirtualization the hypervisor supports a maximum of 512 VCPUs with 512GB of RAM per guest, while using Hardware Virtualization, it supports a maximum of 128 VCPUs and 1TB of RAM per guest. \\
+Why should we use Xen?
+\begin{itemize}
+    \item It's reliable.
+    \item It's flexible.
+    \item It has a very good support for a wide range of operating systems and cloud platforms.
+    \item It's secure because of the minimal attack surface.
+    \item It's modular.
+\end{itemize}
+Xen is built on a very good and efficient hypervisor that allows strong isolation between components.
 \subsubsection{KVM}
+KVM is a full virtualization solution for Linux on x86 hardware, it's based on extensions supporting virtualization and can execute unmodified Linux or Windows images.
+\subsection{Virtual Desktop}
+Another very cool use of virtualization is virtual desktop, in this case we basically have remote resources and users can hop into a personal virtual machine just by using a thin client and their own credentials. If on one side we should have a completely seemless desktop experience that should present no differences from a user's prospective, on the other end the provider should be able to guarantee load balance, high availability, scalability and performance for all of its users. \\
+The pros are the following:
+\begin{itemize}
+    \item Centralized management and security.
+    \item Business continuity.
+    \item Isolation and standard way of managing ProcessDecreases the need to buy new hardware.
+    \item Decreases the time of adding a new image.
+    \item Centralized adiminstration of all desktop, eventually located anywhere in the world.
+\end{itemize}
+Virtual desktop can be implemented in a varieties of ways dependeing on the type of solution / service desired. \\
+\textbf{Single remote desktop} \\
+In single remote desktop we basically remote into our own PC, it's widely used by IT management companies to handle problems on remote machines. \\
+\miniSpace
+\textbf{Shared Desktops} \\
+Shared desktops are based upon a server hosting desktop users and applictaions, desktop sharing is widely used because all the computing power is located on a server and only the monitor, keyboard and mouse are connected to the network. \\
+This system allows a centralized management of desktops and their applications, simplifying licensing and making easier to solve problems, because user applications are located on the server and not on several machines. \\
+\miniSpace
+\textbf{Blade physical desktops}
+Users have their own PC, but the physical hardware is a blade PC located in a datacenter. The main pros and cons of this approach are the following:
+\begin{itemize}
+    \item Each user has his own PC, instead of sharing resources with other users.
+    \item Terminal servers hosting shared desktops can be influenced by server faults/problems.
+    \item Blades require more maintenance.
+\end{itemize}
+\textbf{Virtual Desktop} \\
+A virtual desktop is the opposite of a shared desktop, a single client -PC or notebook- hosts multiple desktops, each one with its own operating system.
+\subsection{Server Virtualization}
+Server virtualization decreases the total cost of ownership because it allows to serve more clients with the same amount of computational power. It also allows to increase server usage and simplifies management via:
+\begin{itemize}
+    \item Dynamic provisioning
+    \item Workload managment and isolation
+    \item Virtual machine migration
+    \item Reconfiguration
+\end{itemize}
