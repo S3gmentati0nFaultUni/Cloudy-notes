@@ -1,0 +1,34 @@
+\section{IaaS}
+Now we will consider the IaaS model in particular, as was previously said, this model allows full access to the resources bought by the user, even though he's unable to control the cloud infrastructure, he controls everything above (apart from the network components). \n
+Providers usually offer different servers with different operating systems that can be chosen by clients based on necessity. \n
+Now we will check all of the specific solutions on the market in specific.
+\subsection{Amazon EC2}
+AWS Cloud is available in more than 30 geographic regions and provides resizable compute capacity in the cloud, it's a pay per use service. \n
+Thanks to the fact that Amazon in a gigantic company they can take avail of their strong presence on most markets to make sure that clients have the best possible experience in terms of reliability. \n
+Also they offer a series of preconfigured templates for instances, so that spinning up a new machine in the cloud is as easy as looking for a specific virtual machine in a list. Amazon also offers the possibility to create virtual networks that are logically isolated from the rest of the AWS Cloud which can be optionally connected to the end user's network. \n
+Amazon EC2 is hosted in multiple locations around the world and is composed by the following building blocks:
+\begin{itemize}
+    \item Regions
+    \item Availability zones, multiple and isolated locations within each region
+    \item Local zones, whic support the placeent of resources
+    \item AWS Outposts, more native AWS services, infrastructure and operating models on-premises
+    \item Wavelength zones, support developers in building applications that provide ultra-low latencies to 5G devices and end users.
+\end{itemize}
+The division into Regions is not only marketing related, each region is isolated and resources are tied to the region and only those resources can be seen/accessed from inside the Region. Each region has multiple isolated locations known as Availability Zones. \n
+To launch an instance, the user selects a region and a virtual private cloud, and possibly a subnet from one of the availability zones. Availability Zones can make instances resilient to failures because if one instance fails the client can move traffic to another instance in another availability zone. \n
+Amazon RDS enables the client to place resources, such as DB instances, and data in multiple locations. \n
+An Outpost is a pool of AWS compute and storage deployed at a customer site. \n
+AWS Greengrass is an open source edge runtime and cloud service for building, deploying, and managing device software. It allows to connect a variety of heterogeneous devices from minuscle sensors to large appliances. \n
+AWS offers many more services as AWS GovCloud, which is an Amazon Region designed and developed to support security and compliance requirements of the US government.
+\subsection{Microsoft Azure}
+Azure offers more than 200 products and cloud services allowing many different interactions between the client and the provider. \n
+Physical datacenters are arranged into regions and linked by one of the largest interconnected networks on the planet; the Azure cloud network can offer high availability, low latency and scalability. \n
+the structure of the Azure cloud business is similar to the Amazon AWS one:
+\begin{itemize}
+    \item Azure datacenters are the physical buildings.
+    \item Azure regions are sets of datacenters.
+    \item Azure geography is a discrete market, typically containing at least one or more regions.
+    \item Azure availability zones, unique physical locations within an Azure region and offer high availability to protect the client's applications nd data from datacenter failures.
+\end{itemize}
+\subsection{Open Nebula}
+Open Nebula is an open source cloud and edge computing platform to build and manage enterprise clouds, it unifies public cloud simplicity and agility with private cloud performance, security and control. \n
