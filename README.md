@@ -1,5 +1,7 @@
 # cloudy-notes
-Very cloudy notes for CCT
+Very cloudy notes for Cloud Computing Technologies in Universitá Statale di Milano
+
+Give us laboratory sessions please!!
 
 To compile the code just head in the directory (./cloudy-notes) and do a run of latexmk like so:
 
