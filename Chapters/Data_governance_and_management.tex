@@ -104,3 +104,29 @@ The differences between the various models can be summarized as follows:
     \item PaaS is a much easier thing to master, it allows for a decent level of customization and control but it also requires a good level of expertise to handle compared to SaaS options.
     \item SaaS is a very low cost solution which is not that customizable but can tick many boxes for low to medium sized companies.
 \end{itemize}
+\subsection{Apache pipeline}
+The Apache pipeline is shown in Figure 14 and includes the Hadoop framework, which is designed to store and process large amounts of data on clusters made of commodity hardware. It constitutes the lowest layer of the architecture and provides storage and resource management. \n
+It also provides the Map Reduce processing model that allows concurrent scanning of multiple files, the model does not suffer from data intensive activities. \n
+Hadoop is a distributed filesystem written in Java, based on the concept of distributing blocks across a series of different nodes. Hive is a structured data warehouse based on Hadoop capable of managing large datasets that reside in distributed storage.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{Images/apache_architecture.jpeg}
+    \caption{The Apache data pipeline}
+\end{figure}
+For the analytics section there is:
+\begin{itemize}
+    \item Hadoop YARN, which is the resource manager of the Hadoop cluster.
+    \item Apache Spark, which is an analytics engine for large scale data processing, along with it there is Spark streaming that allows for large-scale stream (Kafka does stream ingestion) processing.
+    \item Apache Airflow i an orchestrator of processing pipelines aimed at providing scheduling and monitoring capabilities.
+\end{itemize}
+Batch ingestion is handled via common APIs (like REST).
+\subsection{Enterprise Data governance}
+I think that I've skipped on the concept for a long while, what is Data Governance?
+According to wikipedia: \textit{data governance is a data management concept concerning the capability that enables an organization to ensure that high data quality exists throughout the complete lifecycle of the data, and data controls are implemented that support business objectives}. \n
+In the world of enterprise the point is to provide a common approach to data governance across all systems and data within the organization. An enterprise data governance should be:
+\begin{itemize}
+    \item Transparent - governance standards and protocols must be clearly defined and available to all.
+    \item Reproducible - recreate the relevant data landscape at a point in time should be possible.
+    \item Aubditable - all relevant events and assets must be traceable with appropriate historical lineage.
+    \item Consistent - compliance practices must be consistent.
+\end{itemize}
