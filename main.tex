@@ -4,10 +4,25 @@
 \usepackage{longtable}
 \usepackage{graphicx}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{xparse}
 
 \title{Cloudy Notes}
 \author{Alessandro Biagiotti}
 \date{March 2023}
+
+% Definition of enumeration command for rules
+\newcounter{descriptcount}
+
+\NewDocumentEnvironment{enumReq}{O{}}{%
+    \setcounter{descriptcount}{0}%
+    \renewcommand*\descriptionlabel{%
+      \stepcounter{descriptcount}%
+      \normalfont [R\arabic{descriptcount}]%
+    }%
+    \description%
+  }%
+{\enddescription}
 
 \begin{document}
 
