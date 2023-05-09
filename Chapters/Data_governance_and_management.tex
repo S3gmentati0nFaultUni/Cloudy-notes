@@ -130,3 +130,53 @@ In the world of enterprise the point is to provide a common approach to data gov
     \item Aubditable - all relevant events and assets must be traceable with appropriate historical lineage.
     \item Consistent - compliance practices must be consistent.
 \end{itemize}
+If we get back to the example of the Apache sute, two components play fundamental role for data governance:
+Ranger (which is a policy editor and handles access control) and Atlas (which handles fine-grained data control via tagging). \n
+\subsubsection{Apache Ranger}
+Ranger gives centralized authorization and auditing across Hadoop components, it has an extensible architecture with custom policy conditions, context enrichers and more. \n
+Policies are rules that decide how and who can access specific sets of resources and resource classifications. There are different policy types:
+\begin{itemize}
+    \item Access authorization based on resources or resource classification
+    \item Row filter, column-masking based on policies, that can be done by restricting the rows accessible in a table based on users/groups/runtime-context or by masking/anonimizing sensitive columns.
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{Images/Ranger_architecture.jpeg}
+    \caption{Ranger architecture}
+\end{figure}
+Ranger's architecture is shown in Figure 15. \n
+The tags used in Ranger are created in Atlas and can be attatched to metadata, which can be a column, a table, an HDFS path, etc\dots \n
+Plugin of each service saves tags info into policy and can be cached locally for fast retrieval. The flow of evaluation for tag policies is shown in Fiugre 16.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{Images/policies_evaluation.jpeg}
+    \caption{The policies evaluation pipeline}
+\end{figure}
+\subsubsection{Apache Atlas}
+Atlas provides open metadata management and governance capabilities for organizations to build a catalog of their data assets, classify and govern these assets and provide collaboration capabilities around these data assets for data scientists, analysts and the data governance team. \n
+Atlas also provides:
+\begin{itemize}
+    \item Lineage
+    \item Search/Discovery
+    \item Support for Apache Ranger Security and Data Masking
+\end{itemize}
+Atlas keeps in memory a metadata repository with a flexible type system to capture schema/metadata of multiple components. \n
+Is, obviously, perfectly integrated with Apache Hive, Storm, Falcon, Sqoop for metadata and lineage and also with Ranger for classification-based security. \n
+It also provides APIs to support for more components. \n
+\subsection{Data ingestion procedure}
+\etl and \elt are two different ways of doing data ingestion and manipulation, the basic difference is that they are doing the same operations in a different fashion. \n
+The basic operations are the following:
+\begin{itemize}
+    \item Extract - extraction refers to pulling the source data from the original database or data source. \etl puts data into a temporary staging area, while \elt sends data immediately into a data lake storage system.
+    \item Transform - Transformation refers to the process of changing the structure of information, so it integrates with the target data system and the rest of the data in that system.
+    \item Loading refers to the process of depositing the information into a data storage system.
+\end{itemize}
+\subsubsection{\etl}
+\etl is typically used in data warehouses, the advantages of \etl are:
+\begin{itemize}
+    \item Pre structured nature of the OLAP (OnLine Analytical Processing) data warehouse
+    \item Compliance to various laws like GDPR, HIPAA or CPAA.
+    \item \etl was born over two decades ago and has been used a lot.
+\end{itemize}
+\subsubsection{\etl}
+The \etl process also works with data lakes, a data lake is a special kind of data store accepting any kind of structured or unstructured data, there is no need to transform data before loading it. \n
