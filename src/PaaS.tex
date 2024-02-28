@@ -45,11 +45,11 @@ A buildpack is a set of executables that inspects the provided source code and c
     \item \textsf{bin/build} - executes the build logic
 \end{itemize}
 When an application is uploaded to Cloud Foundry the buildpack to be used for proper operation of the application is indicated, the service identifies the buildpack to be used an installs it in the Droplet Execution Agent, where the application runs. \n
-The environment is customized via what the client specifies, the logic is similar to the use of images taken from Dockerhub when doing a compose. \n
+The environment is customized via what the client specifies, the logic is similar to the use oimg taken from Dockerhub when doing a compose. \n
 Cloud Foundry has a modular architecture that consists of several components, including the Cloud Controller (which manages the deployment of applications and services), Routing Component (which handles the traffic between the application and external services), Loggregator (which is just a centralized logging system) and Diego (which is responsible for managing application instances). The architecture can be seen in detail in figure 11.
 \begin{figure}
     \centering
-    \includegraphics[scale=0.5]{./Images/Cloud_Foundry.png}
+    \includegraphics[scale=0.5]{img/Cloud_Foundry.png}
     \caption{Cloud Foundry's architecture}
 \end{figure}
 Now we will go through the various levels:

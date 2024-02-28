@@ -1,15 +1,18 @@
 \chapter{Introduction}
-First, we want to focus on the concept of a distributed system, which is, intuitively, a complex mechanism with many moving parts. The parts can move on their own or according to the plans of a master that is keeping everything under control. We will see a couple of different definitions that try to encapsulate what distributed systems are all about. \\
-A distributed system can be seen as two or more computers, each one with its own local memory and processor, connected via networking communication. \\
-Basically this means that a distributed system is none other than a group of computer communicating via the exchange of messages. \\
+First, we want to focus on the concept of a distributed system, which is, intuitively, a complex mechanism with many moving parts. The parts can move on their own or according to the plans of a master that is keeping everything under control. We will see a couple of different definitions that try to encapsulate what distributed systems are all about.
+
+A distributed system can be seen as two or more computers, each one with its own local memory and processor, connected via networking communication. This means that a distributed system is none other than a group of computer communicating via the exchange of messages.
+
 Distribution can be at three different levels:
 \begin{itemize}
-    \item Hardware
+    \item Hardware - two or more computers are connected via a network, each one has its own local memory and processor.
     \item Data, which, to be processed, needs to be replicated and partitioned
     \item Control
 \end{itemize}
-What is the difference between centralized and distributed systems? \\
-\begin{table}[h!]
+% TODO
+% What does it mean distributed control?
+What is the difference between centralized and distributed systems?
+\begin{table}[h]
     \centering
     \begin{tabular}{| c | c |}
         \hline
@@ -25,25 +28,35 @@ What is the difference between centralized and distributed systems? \\
         \hline
         Executed in concurrent processes & single point of control and of failure\\
         \hline
-        Multiple points of failure & ;D\\
+        Multiple points of failure & :)\\
         \hline
     \end{tabular}
 \end{table}
-An important question needs to find an answer, why do we bother with distributed systems? Is the added complexity really beneficial? \\
-The answer is, obviously, yes (to some extent). 
+A very simple example of a distributed system is a set of nodes, each one acting as a processing node with its own memory and processor, connected via a network. Seeing how this kind of systems are composed by different machines just connected together it's only fair to ask owrselves why do we bother with distributed systems and if the added complexity is really beneficial; the answer is, obviously, yes (to some extent). 
 \begin{itemize}
     \item Distributed systems allow for functional separation between the agents in action.
-    \item The model goes toe to toe with the conception of information we have today.
+    \item The model goes toe to toe with the conception of information we have today (process data anywhere and at any time).
     \item We can distribute computational load over many devices instead of having only one node to complete the task. This is really beneficial for complex tasks.
-    \item Distributed systems are very reliable
-    \item Sharing a pool of resources with many individuals make them very economical because we don't need to buy many for each one, we just need many resources for many people.
+    \item Distributed systems are very reliable.
+    \item Sharing a pool of resources with many individuals makes them very economical because we don't need to buy many for each one, we just need many resources for many people.
 \end{itemize}
-Another good definition of a distributed system is the following:
+A good definition for a distributed system could be the following:
 \begin{center}
     \textit{"A distributed system is a collection of autonomous computing elements that appears to its users as a single coherent system"}
 \end{center}
-This means that a distributed system is basically a network of very different devices, each with its own hardware, its own os, etc... And it appears as if it was a single and coherent entity. \\
-To make this possible we have to mount a middleware layer on top of the operating system of each of the machines, this middleware will filter requests coming from the outside and translate them in something that can be understood by the underlying operating system. The process, although, is completely transparent to the user. \\
+Where the collection of autonomous computing elements means that we have a set of separate machines that have their own resources, their own notion of time (this makes synchronization a problem) and that can communicate only through messages passed over the network. The perception of the system as a single coherent system means that we are adding a layer that hides the complexity of the system from the user, at a lower lever we will need to choose how to manage the group: if the group is open then any node is allowed to join and start messaging with the existing nodes, if the group is closed then only the existing nodes are allowed to communicate and therefore there must be a mechanism that allows nodes to join and leave the group.
+
+To organize this aspet of the network we use an overlay network, which is a network that is built on top of another network and can be of two different types:
+\begin{itemize}
+    \item Structured: each node has a well-defined set of neighbours with whom it can communicate.
+    \item Unstructured: each node has references to randomly selected other nodes from the system.
+\end{itemize}
+A classic example of overlay network is the peer-to-peer networking.
+
+Everything that we have been talking about so far is basically a way to try and hide the fact that the task is being executed by a distributed system and not one single unit, this is called distribution transparency, and ensuring it comes with a series of challenges, first and foremost the fact that we have to make sure that the system is reliable and that it can handle failures.
+
+The Middleware is a component that is used to make the system more transparent, it's a layer that rests on top of the operating system of each of the machines, and it will filter requests coming from the outside and translate them in something that can be understood by the underlying operating system. The process, although, is completely transparent to the user.
+
 To be mor specific, what are the tasks that a middleware should be able to handle?
 \begin{itemize}
     \item It should manage resources offering its applications to efficiently share and deploy those resources across a network.
@@ -54,9 +67,10 @@ To be mor specific, what are the tasks that a middleware should be able to handl
 \end{itemize}
 Now, before analyzing some practical examples of distributed systems, let's consider some very important design goals that should be considered when handling these models.
 \section{Transparency}
-Transparency is a very important concept in computer science, just think about how transparency plays a role in object oriented programming, in the field of distributed computing even more so. We would like to have a system that is easy to use and can easily hid what lies on the other side. \\
-Unfortunately transparency is very hard to achieve (full trainsparency is even impossible), we ended up defining a series of types of transparency that have different meanings:
-\begin{table}[h!]
+Transparency is a very important concept in computer science, just think about how transparency plays a role in object oriented programming, in the field of distributed computing even more so. We would like to have a system that is easy to use and can easily hide what lies on the other side.
+
+Unfortunately transparency is very hard to achieve (full trainsparency is even impossible), we ended up defining a series of different types of transparency that we can achieve in a distributed system, here are some of them:
+\begin{table}[h]
     \centering
     \begin{tabular}{| c | c |}
         \hline
@@ -78,19 +92,20 @@ Unfortunately transparency is very hard to achieve (full trainsparency is even i
         \hline
     \end{tabular}
 \end{table}
-Needless to say that having so many moving parts while trying to hide one or more of the above details can make programming and debugging a distributed system a very complex process. \\
+Needless to say that having so many moving parts while trying to hide one or more of the above details can make programming and debugging a distributed system a very complex process.
 \section{Openness and Scalability}
-A distributed (or operating) system is open when anybody is able to make modifications to the modules that compose it, here is very important to stress a point. Rendering a distributed system open doesn't mean handing all of your personal code over to people, you are just required to make it so that anyone can make modifications without touching the core logic. This is the logic of separating the policy from the mechanism. \\
-A silly example can be: If I produced some kind of remote communication service that uses certain protocols, anyone should be able to choose another protocol to work with and attatch his own code to mine so that it all works seamlessly. \\
-A distributed system should always be scalable, there are three different ways to scale a system:
+A distributed (or operating) system is open when anybody is able to make modifications to the modules that compose it, here is very important to stress a point. Rendering a distributed system open doesn't mean handing all of your personal code over to people, you are just required to make it so that anyone can make modifications without touching the core logic. This is the logic of separating the policy from the mechanism. 
+
+A silly example can be: If I produced some kind of remote communication service that uses certain protocols, anyone should be able to choose another protocol to work with and attatch his own code to mine so that it all works seamlessly. A distributed system should always be scalable, there are three different ways to scale a system:
 \begin{itemize}
     \item Scale in size (number of users or/and processes)
     \item Geographical Scalability
     \item Administrative domanis: The system spans multiple administrative domains
 \end{itemize}
-When scaling is needed we can either scale up, by basically improving the singular hardware specs of the various machines, or scale out, by expanding the fleet of machines that compose the distributed system. \\
-One of the classical problems of scaling out is the replication issue, where we have multiple copies of the same file over many machines in the network. This has a series of effects, first and foremost inconsistency, we usually have to keep track of whichever is the most up to date version of the file. Secondly we have to decide how to handle them, because inconsistencies will surely be present. We can either, as an example, update all of the various copies of the file whenever it changes, or we can keep different versions of the file in the network and, whenever prompted, look for the most up to date currently available.
-\subSpace
+When scaling is needed we can either scale up, by basically improving the singular hardware specs of the various machines, or scale out, by expanding the fleet of machines that compose the distributed system.
+
+One of the classical problems of scaling out is the replication issue, where we have multiple copies of the same file over many machines in the network. This has a series of effects, first and foremost inconsistency, we usually have to keep track of whichever is the most up to date version of the file. Secondly we have to decide how to handle the copies, because inconsistencies will surely be present. We can either, as an example, update all of the various copies of the file whenever it changes, or we can keep different versions of the file in the network and, whenever prompted, look for the most up to date currently available.
+
 The following are a series of false assumptions that developers tend to make when modelling a distributed system:
 \begin{itemize}
     \item The network is reliable.
@@ -105,19 +120,18 @@ The following are a series of false assumptions that developers tend to make whe
 \section{Types of distributed systems}
 We will now explore two different models for distributed systems.
 \subsection{High performance distributed computing}
-High performance distirbuted computing is a very cool field to explore because it's the founding idea of current supercomputers, which dispose of various computing modules that are employed based on the type of load that is hitting the system. \\
-We usually talk about Cluster computing, in which we have similar workstations connected to a high-speed network, each machine is running the same os, or Grid Computing, which is an heterogeneous network of machines dispersed across several organ. \\
+High performance distirbuted computing is a very cool field to explore because it's the founding idea of current supercomputers, which dispose of various computing modules that are employed based on the type of load that is hitting the system. We usually talk about Cluster computing, in which we have similar workstations connected to a high-speed network, each machine is running the same os, or Grid Computing, which is an heterogeneous network of machines dispersed across several facilities.
+
 Cloud computing is another technique for high performance distributed computing, but it's meant for prosumer use and that is because a cloud workstation can be bought for relatively cheap, employed right away and extended at the client's leisure.
 \subsection{Distributed information systems}
-Distributed information systems allow for resilient backup of data. This model is based on the concept of transaction, which is an event that involves a client and a server, for the transaction to take place everything needs to go according to plan (just like an economical transaction). \\
-Transactions must follow the ACID properties:
+Distributed information systems allow for resilient backup of data. This model is based on the concept of transaction, which is an event that involves a client and a server and follows the ACID properties:
 \begin{itemize}
     \item Atomic: The transaction must be indivisible.
     \item Consistent: The transaction must not violate system invariants.
     \item Isolated: Concurrent transactions do not interfere with each other.
     \item Durable: Once a transaction commits, changes are permanent.
 \end{itemize}
-Usually transactions are constructed as a group of subtransactions that run in parallel. This division provides a natural way of distributing a transaction across multiple machines.
+Usually transactions are constructed as a group of subtransactions that run in parallel (nested transaction). This division provides a natural way of distributing a transaction across multiple machines.
 \subsection{Pervasive systems}
 Pervasive systems are networks composed of nodes that are often small, mobile and embedded in larger systems, characterized by the fact that the system naturally blends into the user's environment. In the field of pervasive systems we have three different categories:
 \begin{itemize}
@@ -125,7 +139,7 @@ Pervasive systems are networks composed of nodes that are often small, mobile an
     \item Mobile computing: Pervasive but inherently mobile
     \item Sensor networks
 \end{itemize}
-\textbf{Uniquitous computing} \\
+\subsubsection{Uniquitous computing}
 The core requirements for Ubiquitous computing systems are the following:
 \begin{itemize}
     \item Distribution: The device and network are accessible in a transparent manner (even though they are distributed).
@@ -134,8 +148,9 @@ The core requirements for Ubiquitous computing systems are the following:
     \item Autonomy: Devices must be autonomous.
     \item The system can handle a wide range of dynamic actions and interactions.
 \end{itemize}
-\textbf{Mobile computing} \\
-A distributed system in which there are many different devices with very different architectures, all connected via wireless and in movement. Since the setting for the connection is really complex it's essentially a disruption-tolerant network. \\
-\textbf{Sensor network} \\
-A sensor network should be a network of many sensors implied in different scenarios (the first that comes to mind is a Nuclear implant sensor network), the devices themselves are very simple. Essentially this kind of sensor network is organized as a distributed database, sensors send data to the operator, store data and respond to queries.
-The nodes have very low amount of memory and low computing capabilities, they store just enough to make simple computations and the rest is left to a more capable node in the network. We can think about a more centralized architecture (aka the nuclear implant above) or a more distributed scenario (IoT).
+\subsubsection{Mobile computing}
+A distributed system in which there are many different devices with very different architectures, all connected via wireless and in movement. Since the setting for the connection is really complex it's essentially a disruption-tolerant network.
+\subsubsection{Sensor network}
+A sensor network is a network of many sensors employed in different scenarios (the first that comes to mind is a nuclear plant sensor network), the devices themselves are very simple. Essentially this kind of sensor network is organized as a distributed database, sensors send data to the operator, store data and respond to queries.
+
+The nodes have very low amount of memory and low computing capabilities, they store just enough to make simple computations and the rest is left to a more capable node in the network. We can think about a more centralized architecture (aka the nuclear plant above) or a more distributed scenario (IoT).
