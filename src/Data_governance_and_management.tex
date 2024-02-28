@@ -1,4 +1,4 @@
-\section{Data Governance and Management}
+\chapter{Data Governance and Management}
 As we have said countless times up to this point, cloud computing is a very complex matter, the NIST definition can be found back in section 5.4 and the issues of the model are the following:
 \begin{itemize}
     \item (Micro)Services composition
@@ -65,7 +65,7 @@ Up to this moment we have basically reinforced the fact that there is a plethora
     \includegraphics[scale=0.2]{Images/tech_selection_process.jpeg}
     \caption{Example of criterion to select big data technologies}
 \end{figure}
-\subsection{Big Data as a Service (BDaaS)}
+\section{Big Data as a Service (BDaaS)}
 We have said that entering the world of big data is a hustle, we have also said that there are not enough people to meet the work demand in the field and that there is a heck of a lot of money to be made from the good use of users data. \n
 Point is? \n
 A new company wanting to enter the scene (not necessarily in the tech world) and needing a big data system gets to a point where they find themselves in a situation where they have options, too many options, and no easy solution to all the mess. \n
@@ -104,7 +104,7 @@ The differences between the various models can be summarized as follows:
     \item PaaS is a much easier thing to master, it allows for a decent level of customization and control but it also requires a good level of expertise to handle compared to SaaS options.
     \item SaaS is a very low cost solution which is not that customizable but can tick many boxes for low to medium sized companies.
 \end{itemize}
-\subsection{Apache pipeline}
+\section{Apache pipeline}
 The Apache pipeline is shown in Figure 14 and includes the Hadoop framework, which is designed to store and process large amounts of data on clusters made of commodity hardware. It constitutes the lowest layer of the architecture and provides storage and resource management. \n
 It also provides the Map Reduce processing model that allows concurrent scanning of multiple files, the model does not suffer from data intensive activities. \n
 Hadoop is a distributed filesystem written in Java, based on the concept of distributing blocks across a series of different nodes. Hive is a structured data warehouse based on Hadoop capable of managing large datasets that reside in distributed storage.
@@ -120,7 +120,7 @@ For the analytics section there is:
     \item Apache Airflow i an orchestrator of processing pipelines aimed at providing scheduling and monitoring capabilities.
 \end{itemize}
 Batch ingestion is handled via common APIs (like REST).
-\subsection{Enterprise Data governance}
+\section{Enterprise Data governance}
 I think that I've skipped on the concept for a long while, what is Data Governance?
 According to wikipedia: \textit{data governance is a data management concept concerning the capability that enables an organization to ensure that high data quality exists throughout the complete lifecycle of the data, and data controls are implemented that support business objectives}. \n
 In the world of enterprise the point is to provide a common approach to data governance across all systems and data within the organization. An enterprise data governance should be:
@@ -132,7 +132,7 @@ In the world of enterprise the point is to provide a common approach to data gov
 \end{itemize}
 If we get back to the example of the Apache sute, two components play fundamental role for data governance:
 Ranger (which is a policy editor and handles access control) and Atlas (which handles fine-grained data control via tagging). \n
-\subsubsection{Apache Ranger}
+\subsection{Apache Ranger}
 Ranger gives centralized authorization and auditing across Hadoop components, it has an extensible architecture with custom policy conditions, context enrichers and more. \n
 Policies are rules that decide how and who can access specific sets of resources and resource classifications. There are different policy types:
 \begin{itemize}
@@ -152,7 +152,7 @@ Plugin of each service saves tags info into policy and can be cached locally for
     \includegraphics[scale=0.2]{Images/policies_evaluation.jpeg}
     \caption{The policies evaluation pipeline}
 \end{figure}
-\subsubsection{Apache Atlas}
+\subsection{Apache Atlas}
 Atlas provides open metadata management and governance capabilities for organizations to build a catalog of their data assets, classify and govern these assets and provide collaboration capabilities around these data assets for data scientists, analysts and the data governance team. \n
 Atlas also provides:
 \begin{itemize}
@@ -163,7 +163,7 @@ Atlas also provides:
 Atlas keeps in memory a metadata repository with a flexible type system to capture schema/metadata of multiple components. \n
 Is, obviously, perfectly integrated with Apache Hive, Storm, Falcon, Sqoop for metadata and lineage and also with Ranger for classification-based security. \n
 It also provides APIs to support for more components. \n
-\subsection{Data ingestion procedure}
+\section{Data ingestion procedure}
 \etl and \elt are two different ways of doing data ingestion and manipulation, the basic difference is that they are doing the same operations in a different fashion. \n
 The basic operations are the following:
 \begin{itemize}
@@ -171,14 +171,14 @@ The basic operations are the following:
     \item Transform - Transformation refers to the process of changing the structure of information, so it integrates with the target data system and the rest of the data in that system.
     \item Loading refers to the process of depositing the information into a data storage system.
 \end{itemize}
-\subsubsection{\etl}
+\subsection{\etl}
 \etl is typically used in data warehouses, the advantages of \etl are:
 \begin{itemize}
     \item Pre structured nature of the OLAP (OnLine Analytical Processing) data warehouse
     \item Compliance to various laws like GDPR, HIPAA or CPAA.
     \item \etl was born over two decades ago and has been used a lot.
 \end{itemize}
-\subsubsection{\elt}
+\subsection{\elt}
 The \elt process also works with data lakes, a data lake is a special kind of data store accepting any kind of structured or unstructured data, there is no need to transform data before loading it. \n
 The difference between \etl and \elt is that with \elt is possible to ingest anything and everything as data becomes accessible, \elt paired with a data lake lets you ingest and ever-expanding pool of raw data immediately as it becomes available. Plus it transforms only the data you need. \n
 \elt is less reliable than \etl because \elt is still evolving. \n

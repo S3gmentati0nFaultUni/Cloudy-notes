@@ -1,8 +1,8 @@
-\section{IaaS}
+\chapter{IaaS}
 Now we will consider the IaaS model in particular, as was previously said, this model allows full access to the resources bought by the user, even though he's unable to control the cloud infrastructure, he controls everything above (apart from the network components). \n
 Providers usually offer different servers with different operating systems that can be chosen by clients based on necessity. \n
 Now we will check all of the specific solutions on the market in specific.
-\subsection{Amazon EC2}
+\section{Amazon EC2}
 AWS Cloud is available in more than 30 geographic regions and provides resizable compute capacity in the cloud, it's a pay per use service. \n
 Thanks to the fact that Amazon in a gigantic company they can take avail of their strong presence on most markets to make sure that clients have the best possible experience in terms of reliability. \n
 Also they offer a series of preconfigured templates for instances, so that spinning up a new machine in the cloud is as easy as looking for a specific virtual machine in a list. Amazon also offers the possibility to create virtual networks that are logically isolated from the rest of the AWS Cloud which can be optionally connected to the end user's network. \n
@@ -20,7 +20,7 @@ Amazon RDS enables the client to place resources, such as DB instances, and data
 An Outpost is a pool of AWS compute and storage deployed at a customer site. \n
 AWS Greengrass is an open source edge runtime and cloud service for building, deploying, and managing device software. It allows to connect a variety of heterogeneous devices from minuscle sensors to large appliances. \n
 AWS offers many more services as AWS GovCloud, which is an Amazon Region designed and developed to support security and compliance requirements of the US government.
-\subsection{Microsoft Azure}
+\section{Microsoft Azure}
 Azure offers more than 200 products and cloud services allowing many different interactions between the client and the provider. \n
 Physical datacenters are arranged into regions and linked by one of the largest interconnected networks on the planet; the Azure cloud network can offer high availability, low latency and scalability. \n
 the structure of the Azure cloud business is similar to the Amazon AWS one:
@@ -30,7 +30,7 @@ the structure of the Azure cloud business is similar to the Amazon AWS one:
     \item Azure geography is a discrete market, typically containing at least one or more regions.
     \item Azure availability zones, unique physical locations within an Azure region and offer high availability to protect the client's applications nd data from datacenter failures.
 \end{itemize}
-\subsection{Open Nebula}
+\section{Open Nebula}
 Open Nebula is an open source cloud and edge computing platform to build and manage enterprise clouds, it unifies public cloud simplicity and agility with private cloud performance, security and control. \n
 Open Nebula provides unified management of IT infrastructure and supports both containers and applications. It integrates multiple virtualization technologies like VMware and KVM for fully virtualized clouds. It can easily deploy hybrid and edge environments connecting resources from different providers. \n
 It consists of the cloud management cluster, with front-end nodes and the cloud infrastructure, made of one or several workload clusters. It's located at multiple geographical locations, edge clusters are deployed on premise and on public cloud or edge providers. The following is Open Nebula's architecture.
@@ -39,7 +39,7 @@ It consists of the cloud management cluster, with front-end nodes and the cloud 
     \includegraphics[scale=0.6]{Images/Open_Nebula.png}
     \caption{Open Nebula's architecture}
 \end{figure}
-\subsection{OpenStack}
+\section{OpenStack}
 OpenStack is a cloud solution originally developed by NASA, it provides a cloud operating system that can control large pools of compute, storage and networking resources. A dashboard is also available. \n
 OpenStack goes beyond standard IaaS functionally, it provides additional components, orchestration, fault management and service management amongst other services to ensure high availability of user applications. The following is the architecture of OpenStack.
 \begin{figure}

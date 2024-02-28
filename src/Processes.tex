@@ -1,4 +1,4 @@
-\section{Processes}
+\chapter{Processes}
 Now we will go through a very fast review of what processes and light processes are, first and foremost a very basic, but important, distinction needs to be made between a series of concepts.
 The \textbf{Processor} is the hardware that is used to process instructions coming from programs, a \textbf{Thread} (also known as light process) is a minimal software processor in whose context a series of instructions can be executed; finally, the \textbf{Process}, is a software processor in whose context one or more Threads can be executed. \n
 Why do we have two different types of processes? Not everyone knows that context switching, the operation of changing the contents of the registers in the Processor, is very heavy and it's done every single time we switch Processes during the computation. Using threads is much easier because it allows us to parallelize computation within the same process and they share the address space for memory access. \n

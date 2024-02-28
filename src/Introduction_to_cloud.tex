@@ -1,13 +1,13 @@
-\section{Introduction to Cloud}
+\chapter{Introduction to Cloud}
 In this section we will see the roots of cloud computing, which is a weird brew of different concepts: hardware virtualization, internet technologies, distributed systems and system management. \n
 We'll go rapidly through the various concepts needed.
-\subsection{Distributed Systems}
+\section{Distributed Systems}
 We have talked extensively about Distributed systems previously, just as a refresher, a distributed system is an heterogeneous set of N autonomous processors (sites), n administrators, n operating systems, n data/control flows.
-\subsection{SOA}
+\section{SOA}
 A SOA is a Service Oriented Architecture, it's an open standard for software integrazion and uses a standardized web service software stack. \n
 A Service Oriented Architecture implements the concepts of distributed system and computing providing a loosely-coupled, standard and protocol independent system. SOA used a protocol called SOAP that was very complex to use but very descriptive. Service Oriented Architectures aren't all that used anymore in web development because it's much easier to setup REST applications. \n
 Cloud applications are developed as service compositions at different layers.
-\subsection{Computing models}
+\section{Computing models}
 There are many different computing models, we'll see a couple of them in the following:
 \begin{itemize}
     \item Cluster computing: computers are interconnected through an high performance network and basically form a unique entity.
@@ -18,7 +18,7 @@ There are many different computing models, we'll see a couple of them in the fol
     \item Utility computing: On demand delivery of infrastructure, applications, and business processes in a security rich, shared, scalable, and standard-based computer environment over the internet for a fee.
     \item Autonomic computing: autonomic systems with self management that provide adaptation mechanisms and reduce user involvement.
 \end{itemize}
-\subsection{Cloud computing}
+\section{Cloud computing}
 Cloud computing is a mashup of some of the previous computing models, in particular autonomic and distributed systems. \n
 The idea of cloud computing is to provide IT as a service. Storage, data processing and additional IT services distributed by external providers, applications are computing utilities and users have no need to know how they work beneath. The user pays as he goes depending on the type of service required. \n
 As for distributed systems there are many different definitions for cloud computing, the more interesting one is the NIST definition, which follows:
@@ -50,7 +50,7 @@ Some additional characteristics are the following
 A fundamental aspect of cloud computing is Multi-tenancy which means that a aingle software instance is shared by different enterprises/clients (tenants). Data, via virtualization, is isolated but we have no physical isolation. \n
 The pros of multi-tenancy are that the cloud provider pays less for hardware and he can provide dynamic access to shared resources. \n
 The cons are that users might access data of other users and data backup and data restore are more difficult.
-\subsection{Infrastructure as a Service}
+\section{Infrastructure as a Service}
 Users manage the whole machine, they have virtualized hardware resources associated to them and can install basically anything on the machines as if they had a box next to them. The user has a limited control of network components. \n
 Companies provide different servers with different operating systems and an ad hoc stack software, Amazon offers virtual machines with tifferent combinations of operating systems. \n
 The advantages of IaaS are:
@@ -62,13 +62,13 @@ The advantages of IaaS are:
     \item APIs
 \end{itemize}
 An example can be having a virtual machine with Linux and using it via the network to handle an heavy compilation process.
-\subsection{Platform as a Service}
+\section{Platform as a Service}
 Users install and create applications developed using programming languages, libraries, services and tools supported by the provider. \n
 An example of PaaS is ReplIT which is a platform for coding, compiling and running code. The difference between PaaS and IaaS is that in the first case the user has no control over the system below, the provider offers a complete package for a certain type of development and basically nothing underneath can be changed. \n
 The advantages of PaaS are the same as above.
-\subsection{Software as a Service}
+\section{Software as a Service}
 In the SaaS model users can use applications executed on the cloud infrastructure, users do not manage or control the cloud infrastructre and application-specific functionalities. Users can only control a limited number of user-specific configurations.
-\subsection{Cloud stack and deployment models}
+\section{Cloud stack and deployment models}
 Every XaaS in the stack has a couple of common characteristics:
 \begin{itemize}
     \item Low costs of maintenance

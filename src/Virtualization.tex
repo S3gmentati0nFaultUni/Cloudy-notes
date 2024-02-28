@@ -1,4 +1,4 @@
-\section{Virtualization}
+\chapter{Virtualization}
 Virtualization is a concept which is closely related to the one of Processes and multithreading, virtualization deals with extending or replacing an existing interface mimicing the behaviour of another system. \n
 Virtualization is, nowadays, a standard; that is because it allows to handle hardware changes with ease because the hardware is virtualized and the interface does not change for the above system. With virtualization also come ease of portability and code migration and isolation of failing or attacked components. \n
 There are different ways to do virtualization, a couple of interfaces to be virtualized are the following:
@@ -27,7 +27,7 @@ The concept of emulation and simulation are linked to virtualization, the three 
     \caption{Summary of the principal characteristics of virtualization techniques}
 \end{figure}
 Now we will focus on each one separately.
-\subsection{Virtualization}
+\section{Virtualization}
 Virtualization is compatible with x86/64 machines, each has a full and dedicated environment and each machine is isolated from each other just like physical separation. \n
 Virtualization was created to solve some issues:
 \begin{itemize}
@@ -103,9 +103,9 @@ In \textbf{Application level virtualization} [4e] we have a virtualized applicat
 \smallSpace
 Virtualization can either be native or non-native, if it's native is fast because guest OS and host OS coincide and, probably, the Hypervisor is very low level and very efficient. In the other case we are working with a slower form of virtualization but it allows to have different operating systems. \n
 
-\subsection{Virtualization Software}
+\section{Virtualization Software}
 Now we will se a couple of specific solutions for hardware virtualization.
-\subsubsection{VMware ESXi}
+\subsection{VMware ESXi}
 The first virtualization platform that we'll check out is vSphere, which is an ecosystem including different virtualization solutions.
 \begin{figure}
     \centering
@@ -115,7 +115,7 @@ The first virtualization platform that we'll check out is vSphere, which is an e
 vCenter is a management middleware layied on top of the virtualized environment and basically allows full control over the resources. This solution allows to control up to 2000 hosts and 35000 virtual machines. \n
 ESXi is the vSphere's hypervisor and gives the fundamentals to build and manage a virtualized IT infrastructure. It's a bare-metal hypervisor, installed directly on server hardware and takes up only 150MB. It partitions the physical server into sveral virtual servers, each virtual machine is a complete system on its own. \n
 Virtual machines can be kept safe via powerful encryption systems and role based access control.
-\subsubsection{Xen}
+\subsection{Xen}
 Xen is a Paravirtualization hypervisor released under GPL2 license, with paravirtualization we can expect performance similar to a non-virtualized machine. It can scale up to monstrous numbers: 4095 host CPUs with 16TB of RAM; it's important to note that using paravirtualization the hypervisor supports a maximum of 512 VCPUs with 512GB of RAM per guest, while using Hardware Virtualization, it supports a maximum of 128 VCPUs and 1TB of RAM per guest. \n
 Why should we use Xen?
 \begin{itemize}
@@ -126,9 +126,9 @@ Why should we use Xen?
     \item It's modular.
 \end{itemize}
 Xen is built on a very good and efficient hypervisor that allows strong isolation between components.
-\subsubsection{KVM}
+\subsection{KVM}
 KVM is a full virtualization solution for Linux on x86 hardware, it's based on extensions supporting virtualization and can execute unmodified Linux or Windows images.
-\subsection{Virtual Desktop}
+\section{Virtual Desktop}
 Another very cool use of virtualization is virtual desktop, in this case we basically have remote resources and users can hop into a personal virtual machine just by using a thin client and their own credentials. If on one side we should have a completely seemless desktop experience that should present no differences from a user's prospective, on the other end the provider should be able to guarantee load balance, high availability, scalability and performance for all of its users. \n
 The pros are the following:
 \begin{itemize}
@@ -155,7 +155,7 @@ Users have their own PC, but the physical hardware is a blade PC located in a da
 \end{itemize}
 \textbf{Virtual Desktop} \n
 A virtual desktop is the opposite of a shared desktop, a single client -PC or notebook- hosts multiple desktops, each one with its own operating system.
-\subsection{Server Virtualization}
+\section{Server Virtualization}
 Server virtualization decreases the total cost of ownership because it allows to serve more clients with the same amount of computational power. It also allows to increase server usage and simplifies management via:
 \begin{itemize}
     \item Dynamic provisioning

@@ -1,4 +1,4 @@
-\section{Introduction}
+\chapter{Introduction}
 First, we want to focus on the concept of a distributed system, which is, intuitively, a complex mechanism with many moving parts. The parts can move on their own or according to the plans of a master that is keeping everything under control. We will see a couple of different definitions that try to encapsulate what distributed systems are all about. \\
 A distributed system can be seen as two or more computers, each one with its own local memory and processor, connected via networking communication. \\
 Basically this means that a distributed system is none other than a group of computer communicating via the exchange of messages. \\
@@ -53,7 +53,7 @@ To be mor specific, what are the tasks that a middleware should be able to handl
     \item It should mask the recovery failures (not trivial).
 \end{itemize}
 Now, before analyzing some practical examples of distributed systems, let's consider some very important design goals that should be considered when handling these models.
-\subsection{Transparency}
+\section{Transparency}
 Transparency is a very important concept in computer science, just think about how transparency plays a role in object oriented programming, in the field of distributed computing even more so. We would like to have a system that is easy to use and can easily hid what lies on the other side. \\
 Unfortunately transparency is very hard to achieve (full trainsparency is even impossible), we ended up defining a series of types of transparency that have different meanings:
 \begin{table}[h!]
@@ -79,7 +79,7 @@ Unfortunately transparency is very hard to achieve (full trainsparency is even i
     \end{tabular}
 \end{table}
 Needless to say that having so many moving parts while trying to hide one or more of the above details can make programming and debugging a distributed system a very complex process. \\
-\subsection{Openness and Scalability}
+\section{Openness and Scalability}
 A distributed (or operating) system is open when anybody is able to make modifications to the modules that compose it, here is very important to stress a point. Rendering a distributed system open doesn't mean handing all of your personal code over to people, you are just required to make it so that anyone can make modifications without touching the core logic. This is the logic of separating the policy from the mechanism. \\
 A silly example can be: If I produced some kind of remote communication service that uses certain protocols, anyone should be able to choose another protocol to work with and attatch his own code to mine so that it all works seamlessly. \\
 A distributed system should always be scalable, there are three different ways to scale a system:
@@ -102,13 +102,13 @@ The following are a series of false assumptions that developers tend to make whe
     \item Transport cost is zero.
     \item One single administrator.
 \end{itemize}
-\subsection{Types of distributed systems}
+\section{Types of distributed systems}
 We will now explore two different models for distributed systems.
-\subsubsection{High performance distributed computing}
+\subsection{High performance distributed computing}
 High performance distirbuted computing is a very cool field to explore because it's the founding idea of current supercomputers, which dispose of various computing modules that are employed based on the type of load that is hitting the system. \\
 We usually talk about Cluster computing, in which we have similar workstations connected to a high-speed network, each machine is running the same os, or Grid Computing, which is an heterogeneous network of machines dispersed across several organ. \\
 Cloud computing is another technique for high performance distributed computing, but it's meant for prosumer use and that is because a cloud workstation can be bought for relatively cheap, employed right away and extended at the client's leisure.
-\subsubsection{Distributed information systems}
+\subsection{Distributed information systems}
 Distributed information systems allow for resilient backup of data. This model is based on the concept of transaction, which is an event that involves a client and a server, for the transaction to take place everything needs to go according to plan (just like an economical transaction). \\
 Transactions must follow the ACID properties:
 \begin{itemize}
@@ -118,7 +118,7 @@ Transactions must follow the ACID properties:
     \item Durable: Once a transaction commits, changes are permanent.
 \end{itemize}
 Usually transactions are constructed as a group of subtransactions that run in parallel. This division provides a natural way of distributing a transaction across multiple machines.
-\subsubsection{Pervasive systems}
+\subsection{Pervasive systems}
 Pervasive systems are networks composed of nodes that are often small, mobile and embedded in larger systems, characterized by the fact that the system naturally blends into the user's environment. In the field of pervasive systems we have three different categories:
 \begin{itemize}
     \item Ubiquitous computing: Pervasive and continuously present

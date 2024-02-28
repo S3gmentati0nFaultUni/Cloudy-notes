@@ -1,0 +1,87 @@
+\usepackage{a4wide}
+
+\usepackage[english,italian]{babel}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{algorithm,algpseudocode}
+\usepackage{bm}
+\usepackage{cancel}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks,
+           citecolor=black,
+           filecolor=black,
+           linkcolor=black,
+           urlcolor=black,
+           bookmarksopen=true}
+
+\usepackage{xcolor}
+
+\usepackage{tikz}
+\usepackage{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{xparse}
+
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Teo}
+\newtheorem{definition}{Def}
+
+\newcommand{\@includebasepath}{src}
+\newcommand{\incl}[1]{\include{\@includebasepath/#1}}
+
+\newcommand{\set}[1]{\ensuremath{#1}}
+\newcommand{\caProd}[2]{\set{#1_0 \times #1_1 \times \dots \times #1_#2}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\field}{\mathbb{K}}
+\newcommand{\bigo}[1]{$\mathcal{O}(#1)$}
+\newcommand{\bigz}[1]{$\Omega(#1)$}
+\newcommand{\bigt}[1]{$\Theta(#1)$}
+\newcommand{\fun}[3]{$#1 : #2 \rightarrow #3$}
+\newcommand{\st}{\hspace{1mm}|\hspace{1mm}}
+\newcommand{\fa}{\hspace{1mm}\forall \hspace{1mm}}
+\newcommand{\curly}{\mathrel{\leadsto}}
+\newcommand{\flr}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\bigb}[1]{\left(#1\right)}
+\newcommand{\bigs}[1]{\left[#1\right]}
+\newcommand{\bigc}[1]{\left\{#1\right\}}
+\newcommand{\scalar}[2]{\left<#1, #2\right>}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\clrz}[2]{\textcolor{#1}{#2}}
+\newcommand{\trans}[1]{#1^\intercal}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\algdef{SE}[DOWHILE]{Do}{doWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+
+\newcommand{\subSkip}{\vspace{1cm}\\}
+\newcommand{\smallSkip}{\vspace{0.5cm}\\}
+\newcommand{\miniSkip}{\vspace{3pt}\\}
+\newcommand{\subSpace}{\vspace{1cm}}
+\newcommand{\smallSpace}{\vspace{0.5cm}}
+\newcommand{\miniSpace}{\vspace{3pt}}
+\newcommand{\n}{\\}
+\newcommand{\pink}[1]{{\color{red} #1} }
+\newcommand{\elt}{\pink{ELT}}
+\newcommand{\lb}[1]{{\color{blue} #1} }
+\newcommand{\etl}{\lb{ETL}}
+
+\pagenumbering{arabic}
+\hfuzz = .6pt
+
+% Definition of enumeration command for rules
+\newcounter{descriptcount}
+
+\NewDocumentEnvironment{enumReq}{O{}}{%
+    \setcounter{descriptcount}{0}%
+    \renewcommand*\descriptionlabel{%
+      \stepcounter{descriptcount}%
+      \normalfont [R\arabic{descriptcount}]%
+    }%
+    \description%
+  }%
+{\enddescription}
