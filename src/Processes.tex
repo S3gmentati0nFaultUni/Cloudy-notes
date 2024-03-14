@@ -9,4 +9,15 @@ Why do we have two different types of processes? Not everyone knows that context
 
 Basically having Threads allows us to: avoid waits when doing I/O operations, take advantage of multiprocessor architectures by parallelizing operations and avoid process switching in the context of a single large application. The trade off is that we need to be aware of the fact that programming for parallallelized environment is complex from many points of view.
 
-A very classical example of multithreading is in the client-server communiucation, where the server can be multithreaded to handle multiple requests at the same time and avoiding that some slower one prevents the process from working correctly.
+A very classical example of multithreading is in the client-server communiucation, where the server can be multithreaded to handle multiple requests at the same time and avoiding that some slower one prevents the process from working correctly. Virtualization is a concept which is closely related to the one of processes and multithreading, virtualization deals with extending or replacing an existing interface mimicing the behaviour of another system.
+
+Virtualization is, nowadays, a standard; that is because it allows to handle hardware changes with ease because the hardware is virtualized and the interface does not change for the above system. With virtualization also come ease of portability and code migration and isolation of failing or attacked components.
+
+There are different ways to do virtualization, a couple of interfaces to be virtualized are the following:
+\begin{itemize}
+    \item Instruction set architecture, we divide operations between privileged and non-privileged instructions.
+    \item Process virtualization in which we have a separate set of instructions, an interpreter/emulator, running atop an OS
+    \item Native virtual machine monitor in which we have low level instructions along with barebones minimal operating system
+    \item Hosted virtual machine monitor in which we have low level instructions but most of the work is delegated to a full fladged OS.
+\end{itemize}
+We will see virtualization more specifically in another chapter.
