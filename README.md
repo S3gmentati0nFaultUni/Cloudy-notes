@@ -14,4 +14,4 @@ Currently the project is on hold, but if I come around to the exam again this ne
 ## Important work to do!
  - [ ] Correct all of the chapters in the final document
  - [ ] Update the informations inside the document
- - [ ] Standardize the structure of the project making it better and more share-oriented
+ - [x] Standardize the structure of the project making it better and more share-oriented
