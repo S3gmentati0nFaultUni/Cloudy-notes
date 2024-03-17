@@ -1,0 +1,62 @@
+\chapter{Fault Tolerance}
+Distributed systems are composed of many moving pieces that should work seamlessly together to give the user the impression that they are using one single coherent system, problem is that more often than not problems arise and to contrast them a distributed system should always be fault tolerant, meaning that it should be able to continue working even if some of its components fail and it should also be able to recover from errors.
+
+Components may depend on on some other component to work correctly, dependability covers a number of useful requirements:
+\begin{itemize}
+    \item Availability - readiness for usage.
+    \item Reliability - continuity of service delivery, it's measured in percentage of uptime vs downtime.
+    \item Safety - very low probability of catastrophic consequences.
+    \item Maintainability - how easy it is to repair a failed system.
+\end{itemize}
+Accompanying the concepts of reliability and availability we have a series of metrics that are used to determine how reliable a component is:
+\begin{itemize}
+    \item Mean time to failure (MTTF) - average time until a component fails.
+    \item Mean time to repair (MTTR) - average time to repair a failed component.
+    \item Mean time between failures (MTBF) - MTTF + MTTR.
+\end{itemize}
+The availability is computed as $\frac{MMTF}{MTBF}$.
+
+Reliability and availability make sense only if we have an accurate notion of what a failure is: a failure is a component not living up to its specifications, an error is part of a component that can lead to a failure (e.g. a bug) and a fault is the cause of an error. To handle faults we have so many different approaches, some of the most common are:
+\begin{itemize}
+    \item Fault prevention - avoid faults in the first place.
+    \item Fault tolerance - build components that can handle faults.
+    \item Fault removal - reduce the presence, number or seriousness of faults.
+    \item Fault forecasting - estimate current presence, future incidence and consequences of faults.
+\end{itemize}
+On the other hand, handling failures is a bit harder, because the fault is basically the cause of the error that generates the failure, if you handle the fault then you are basically eliminating the problem at the root. If you have to handle a failure then the problem already manifested itself and you have to deal with the consequences. There are many different types of failures:
+\begin{itemize}
+    \item Crash failure - the program just halts.
+    \item Omission failure - fails to respond to incoming requests
+    \item Timing failure - fails to respond within a given time frame.
+    \item Response failure - gives incorrect responses.
+    \item Arbitrary failure - behaves arbitrarily.
+\end{itemize}
+Arbitrary failures are considered also to mine the security of the sistem and are usually qualified as malicious. Let's consider, as an example, crash failures and let's see what we can do to handle them.
+
+If the system is asynchronous there are no assumptions about process execution speeds or message delivery times, therefore we cannot reliably detect crash failures.
+
+If the system is synchronous we can easily spot crash failures because we can put bounds or timeouts to the operations, therefore we can reliably detect omission and timing failures but we can also declare components timing out as dead, therefore we have a good enough crash failures detection system.
+
+Failure handling, as we already said previously, is extremely hard, in some cases even impossible. The best thing that we can do is either avoiding failures as much as possible through redundancy mechanisms that can be implemented in different ways like information redundancy, time redundancy or physical redundancy; or we can implement a fault tolerant system.
+
+A system is fault tolerant if it can continue working even though some part of it is either offline or not working properly. To achieve fault tolerance there must be protection against failures, which in turn requires both a certain level of replication to allow for the functionalities to keep on working and a certain level of masking.
+
+Fault tolerance is strongly linked with the concept of consensus, before declaring that one of the components in a distributed system is faulty we need to be sure that the component is faulty and therefore the system needs to reach consensus about the problem. Some of the basic techniques to reach consensus are flooding, voting and Paxos algorithm. If the system is undergoing arbitrary failures reaching consensus is harder because none of the components is able to determine with certainty that another is telling the truth or lying. This is a classical problem known as the Byzantine Generals problem and its solution is the practical Byzantine fault tolerance.
+
+A classical technique when it comes to implementing fault tolerance is to organize replicated processes into a group, the problem is that of course there is going to be, potentially, loss of performance. Also, due to what we just said about consensus the various components of the group need to exchange numerous messages in order to be able to reach any kind of decision. The formal requirements for consensus are the following:
+\begin{itemize}
+    \item Processes produce the same output value.
+    \item Every output value must be valid.
+    \item Every process must eventually provide an output.
+\end{itemize}
+Following everything we have said up to this point we have to name the CAP (Consistency, Availability, Partitioning) theorem, which states that any networked system providing shared data can provide only two of the following three properties:
+\begin{itemize}
+    \item[C] - Consistency - a shared and replicated data item appears as a single, up-to-date copy.
+    \item[A] - Availability - updates will always be eventually executed.
+    \item[P] - Partitioning - tolerant to the partitioning of processes into groups.
+\end{itemize}
+Everything we said up to this point is interesting but, since our systems are unreliable by definition, in order to properly mask failures we first need to detect them, a classical way of doing that is the Heartbeat system, which is a simple way (still not entirely reliable) to detect if a component is still alive.
+
+When talking about Process groups we can say that group communication is reliable when it can be guaranteed that a message is received ans subsequently deliveredy by all nonfaulty group members and we can say that an operation is either performed by each member of the process group (and therefore we have consensus about the operation) or by none of them. That is why in this field we usually employ distributed transactions and reliable multicasting systems.
+
+Finally, we can have the most reliable system in the world, but when something does break it just breaks, that is why we need to be able to recover to a correct state, a classic way of recovering is by creating checkpoints (with backup systems off site and / or in site) and message logging.
