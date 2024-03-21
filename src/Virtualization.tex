@@ -129,13 +129,13 @@ The first virtualization platform that we'll check out is vSphere, which is an e
     \includegraphics[scale=0.4]{img/ESXi.png}
     \caption{VMware vSphere}
 \end{figure}
-vCenter is a management middleware layied on top of the virtualized environment and basically allows full control over the resources. This solution allows to control up to 2000 hosts and 35000 virtual machines.
+vCenter is a management middleware layed on top of the virtualized environment and basically allows full control over the resources. This solution allows to control up to 2.000 hosts and 35.000 virtual machines.
 
 ESXi is the vSphere's hypervisor and gives the fundamentals to build and manage a virtualized IT infrastructure. It's a bare-metal hypervisor, installed directly on server hardware and takes up only 150MB. It partitions the physical server into sveral virtual servers, each virtual machine is a complete system on its own.
 
 Virtual machines can be kept safe via powerful encryption systems and role based access control.
 \subsection{Xen}
-Xen is a Paravirtualization hypervisor released under GPL2 license, with paravirtualization we can expect performance similar to a non-virtualized machine. It can scale up to monstrous numbers: 4095 host CPUs with 16TB of RAM; it's important to note that using paravirtualization the hypervisor supports a maximum of 512 VCPUs with 512GB of RAM per guest, while using Hardware Virtualization, it supports a maximum of 128 VCPUs and 1TB of RAM per guest.
+Xen is a Paravirtualization hypervisor released under GPL2 license, with paravirtualization we can expect performance similar to a non-virtualized machine. It can scale up to monstrous numbers: 4.095 host CPUs with 16Tb of RAM; it's important to note that using paravirtualization the hypervisor supports a maximum of 512 VCPUs with 512Gb of RAM per guest, while using Hardware Virtualization, it supports a maximum of 128 VCPUs and 1Tb of RAM per guest.
 
 Why should we use Xen?
 \begin{itemize}
@@ -145,9 +145,18 @@ Why should we use Xen?
     \item It's secure because of the minimal attack surface.
     \item It's modular.
 \end{itemize}
-Xen is built on a very good and efficient hypervisor that allows strong isolation between components.
+Xen's hypervisor is inserted between the hardware and the OS, there is very low overhead and performance are comparable with a native system ones, it re-utilizes Linux device drivers for simplified management, it's robust against driver failures and can protect guests and the hypervisor from driver failures. On top of the hypervisor run a number of virtual machines known as domains, domain 0 is a special guest that contains the drivers for all the devices in the system. Xen's hypervisor:
+\begin{itemize}
+    \item Optimizes CPU utilization.
+    \item Offers performance and scalability for complex systems.
+    \item Offers separation between hypervision execution and OS stack management.
+    \item Has interchangeable components.
+    \item Offers string isolation between components.
+\end{itemize} 
 \subsection{KVM}
 KVM is a full virtualization solution for Linux on x86 hardware, it's based on extensions supporting virtualization and can execute unmodified Linux or Windows images.
+
+Now we are going to move to Virtualization in the field of communicating machines.
 \section{Virtual Desktop}
 Another very cool use of virtualization is virtual desktop, in this case we basically have remote resources and users can hop into a personal virtual machine just by using a thin client and their own credentials. If on one side we should have a completely seemless desktop experience that should present no differences from a user's prospective, on the other end the provider should be able to guarantee load balance, high availability, scalability and performance for all of its users.
 
@@ -159,30 +168,24 @@ The pros are the following:
     \item Decreases the time of adding a new image.
     \item Centralized adiminstration of all desktop, eventually located anywhere in the world.
 \end{itemize}
-Virtual desktop can be implemented in a varieties of ways dependeing on the type of solution / service desired.
+Virtual desktop can be implemented in a variety of ways dependeing on the type of solution / service desired.
+\subsection{Single remote desktop}
+Whenever we deal with a single remote desktop we basically remote into our own PC (the remote PC is a blade server located in a datacenter), it's widely used by IT management companies to handle problems on remote machines.
 
-\textbf{Single remote desktop}
-
-In single remote desktop we basically remote into our own PC, it's widely used by IT management companies to handle problems on remote machines.
-
-\miniSpace
-\textbf{Shared Desktops}
-
-Shared desktops are based upon a server hosting desktop users and applictaions, desktop sharing is widely used because all the computing power is located on a server and only the monitor, keyboard and mouse are connected to the network.
-
-This system allows a centralized management of desktops and their applications, simplifying licensing and making easier to solve problems, because user applications are located on the server and not on several machines.
-
-\miniSpace
-\textbf{Blade physical desktops}
-Users have their own PC, but the physical hardware is a blade PC located in a datacenter. The main pros and cons of this approach are the following:
+The pros and cons of this kind of model are the following:
 \begin{itemize}
     \item Each user has his own PC, instead of sharing resources with other users.
     \item Terminal servers hosting shared desktops can be influenced by server faults/problems.
     \item Blades require more maintenance.
 \end{itemize}
-\textbf{Virtual Desktop}
-
+\subsection{Virtual desktop machines}
 A virtual desktop is the opposite of a shared desktop, a single client -PC or notebook- hosts multiple desktops, each one with its own operating system.
+\subsection{Shared Desktops}
+Shared desktops are based upon a server hosting desktop users and applictaions, desktop sharing is widely used because all the computing power is located on a server and only the monitor, keyboard and mouse are connected to the network.
+
+This system allows a centralized management of desktops and their applications, simplifying licensing and making easier to solve problems, because user applications are located on the server and not on several machines.
+\subsection{VDI central hosting}
+Any user can connect through a thing client and a gateway to a broker that is able to fetch the requested image from an image server which is then sent to another set of servers that are used to run the image, obviously it's working in a virtualized environment and therefore the hosts are actually virtual machines running on one or more servers.
 \section{Server Virtualization}
 Server virtualization decreases the total cost of ownership because it allows to serve more clients with the same amount of computational power. It also allows to increase server usage and simplifies management via:
 \begin{itemize}
@@ -190,4 +193,11 @@ Server virtualization decreases the total cost of ownership because it allows to
     \item Workload managment and isolation
     \item Virtual machine migration
     \item Reconfiguration
+\end{itemize}
+\textbf{Blade physical desktops}
+Users have their own PC, but the physical hardware is a blade PC located in a datacenter. The main pros and cons of this approach are the following:
+\begin{itemize}
+    \item Each user has his own PC, instead of sharing resources with other users.
+    \item Terminal servers hosting shared desktops can be influenced by server faults/problems.
+    \item Blades require more maintenance.
 \end{itemize}
