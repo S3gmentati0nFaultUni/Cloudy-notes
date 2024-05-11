@@ -100,23 +100,23 @@ Since we need to be able to differenciate between different types of instruction
 \end{theorem}
 All virtualization approaches are built on Popek and Goldberg conditions, even though initial implementations of x86 did not meet Popek and Goldberg conditions, these conditions are overall sufficient but not necessary and therefore they could be relaxed to reach different approaches.
 
-Now we will consider different approaches for emulation, simulation and virtualization. These solutions can be found in Figure \ref{fig:virtualization_stacks}.
+Now we will consider different approaches for emulation, simulation and virtualization. These solutions can be found in Figure \ref{fig:virtualization-stacks}.
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{img/virtualization_stacks.png}
     \caption{Various virtualization models}
-    \label{fig:virtualization_stacks}
+    \label{fig:virtualization-stacks}
 \end{figure}
 \begin{itemize}
     \item \textbf{Full emulation} - We emulate every aspect of a computer and it allows to execute an unmodified guest OS on a completely different host architecture.
-    \item \textbf{Full virtualization [\ref{fig:virtualization_stacks}.a]} - Only emulates the necessary hardware, allowing the isolated execution of a guest OS, the only difference is that the guest OS must be designed for the same architecture.
+    \item \textbf{Full virtualization [\ref{fig:virtualization-stacks}.a]} - Only emulates the necessary hardware, allowing the isolated execution of a guest OS, the only difference is that the guest OS must be designed for the same architecture.
 
     If we need to run software for MIPS-32 architecture we are going to need to emulate the whole machine because we cannot run a virtual machine made for something like that on x86.
 
-    Nowadays processors come with instructions that allow to provide the virtual machine with some true hardware (\textbf{Hardware assisted virtualization} [\ref{fig:virtualization_stacks}.c]). That boosts machine performance with full virtualization, basically a CPU execution targeting privileged instructions allows the VMM to run in a new root mode below the Guest OS level and there is the possibility to do direct execution of user requests to the Host system hardware, therefore there is no need for either binary translation or paravirtualization.
-    \item \textbf{Paravirtualization [\ref{fig:virtualization_stacks}.b]} - is another form of virtualization where the virtual machine makes available an API to extend the guest OS (the guest OS has to be modified), the extension consists of hypercall implementation which is a virtualized version of a system call. Basically it's a way of opening a direct line of communication between the Guest OS and the Hypervisor below.
-    \item \textbf{OS-level virtualization [\ref{fig:virtualization_stacks}.d]} - the virtual machine manager partitions hardware resources of host OS between the guests. The host OS guarantees the isolation of multiple user space instances, an example of this is Docker.
-    \item \textbf{Application level virtualization [\ref{fig:virtualization_stacks}.e]} - we have a virtualized application that runs in a safe and enclosed environment, this avoids risky memory overwrites that may break the operating system. This also allows for better portability of code.
+    Nowadays processors come with instructions that allow to provide the virtual machine with some true hardware (\textbf{Hardware assisted virtualization} [\ref{fig:virtualization-stacks}.c]). That boosts machine performance with full virtualization, basically a CPU execution targeting privileged instructions allows the VMM to run in a new root mode below the Guest OS level and there is the possibility to do direct execution of user requests to the Host system hardware, therefore there is no need for either binary translation or paravirtualization.
+    \item \textbf{Paravirtualization [\ref{fig:virtualization-stacks}.b]} - is another form of virtualization where the virtual machine makes available an API to extend the guest OS (the guest OS has to be modified), the extension consists of hypercall implementation which is a virtualized version of a system call. Basically it's a way of opening a direct line of communication between the Guest OS and the Hypervisor below.
+    \item \textbf{OS-level virtualization [\ref{fig:virtualization-stacks}.d]} - the virtual machine manager partitions hardware resources of host OS between the guests. The host OS guarantees the isolation of multiple user space instances, an example of this is Docker.
+    \item \textbf{Application level virtualization [\ref{fig:virtualization-stacks}.e]} - we have a virtualized application that runs in a safe and enclosed environment, this avoids risky memory overwrites that may break the operating system. This also allows for better portability of code.
 \end{itemize}
 Virtualization can either be native or non-native, if it's native is fast because guest OS and host OS coincide and, probably, the Hypervisor is very low level and very efficient. In the other case we are working with a slower form of virtualization but it allows to have different operating systems.
 

@@ -7,8 +7,10 @@ Even though the course is about cloud computing like any business solution it's 
 \end{itemize}
 The replies to these questions give an end goal, with an end goal we can understand what kind of technologies we should be using.
 \section{Cloud Migration}
-Now we'll concentrate on the concept of migration, when should we consider migration to the cloud? Which part of an IT application must or can be migrated to the cloud? Which does not? \n
-Let's recall why cloud is considered to be a good solution. It will reduce complexity of system management and will allow to scale easily in order to accomodate more users. \n
+Now we'll concentrate on the concept of migration, when should we consider migration to the cloud? Which part of an IT application must or can be migrated to the cloud? Which does not?
+
+Let's recall why cloud is considered to be a good solution. It will reduce complexity of system management and will allow to scale easily in order to accomodate more users.
+
 What does cloud computing promise?
 \begin{itemize}
     \item Full network reliability.
@@ -29,35 +31,52 @@ What does cloud computing promise?
     \item Interoperability and portability.
     \item Green IT.
 \end{itemize}
-A company should migrate to cloud because it's going to cost them less than having hardware and software working on premise and it will allow them to scale easily depending on the amount of people that use their services. \n 
+A company should migrate to cloud because it's going to cost them less than having hardware and software working on premise and it will allow them to scale easily depending on the amount of people that use their services.
+
 The cloud solution allows the company to concentrate on the service they want to offer and forget about the underlying infrastructure. Now we will take a look at the differences between going cloud and offering the same on premise.
+
 \subsection{On demand resourcing}
-Adding additional resources to a datacenter on premise is really can be really difficult and challenging, if the servers are "on fire" the company can get new hardware but the process of obtaining new hardware, especially in big amounts, can be long. The time between the moment the issue is acknowledged and the moment the issue is resolved may be of up to many weeks. \n
-This is a risky manouver that may cost clients to the company. In a cloud environment the company can allocate as many additional resources as needed.
+Adding additional resources to a datacenter on premise can be really difficult, if the servers are "on fire" the company can get new hardware but the process of obtaining new hardware, especially in big amounts, can be long. The time between the moment the issue is acknowledged and the moment the issue is resolved may be of many weeks.
+
+This is a risky manouver that may cost clients to the company. In a cloud environment the company
+can allocate as many additional resources as needed almost instantly.
+
 \subsection{Scalability}
 Scalability is not supported on premise because it would require many resources. While a cloud solution can be scaled in / out or down depending on the current load and the amount of resources allocated for a certain client.
+
 \subsection{Economy of scale}
 Traditional hosting costs are much higher per unit of resource on premise. In cloud providers have very competitive prices for resources. Basically the more you buy the cheaper it becomes.
+
 \subsection{Flexibility and elasticity}
-On premise solutions can be flexible and elastic but the company must plan ahead in order to have resources available for possible usage spikes. Obviously, planning them wrong will yield problems with customers and a loss of reputation. \n
+On premise solutions can be flexible and elastic but the company must plan ahead in order to have resources available for possible usage spikes. Obviously, planning them wrong will yield problems with customers and a loss of reputation.
+
 A cloud solution is really performant and can adapt to the situation.
+
 \subsection{Growth}
 Groth is difficult on premise because it involves the purchase of a new space and the transfer of machine and personnel to the new space. The process can require many months. With a cloud infrastructure is really easy to scale up a company, it just takes the purchase of more resources or more machines from the provider of choice.
+
 \subsection{Utility based metering}
-An on premise solution requires the machines to be powered on at all times, this implies very high costs for electricity, cooling and the actual hardware wearing out. \n
+An on premise solution requires the machines to be powered on at all times, this implies very high costs for electricity, cooling and the actual hardware wearing out.
+
 In a cloud environment the company pays for the amount of resources used, via virtualization servers can be turned off whenever aren't needed.
+
 \subsection{Shared infrastructure}
-It's not supported because each user has its own dedicated hardware. \n
+It's not supported because each user has its own dedicated hardware.
+
 In a cloud environment hosts are virtualized and different teanants share the same resources, even though it's possible to have dedicated hosts or instances. Since the infrastructure is shared there is no need to have a huge amount of resources, it's ok to have less because they can be spanned between dfferent users.
+
 \subsection{High Availability}
-Having high availability on premise is really hard, because involves high costs to own a lot of hardware. \n
+Having high availability on premise is really hard, because involves high costs to own a lot of hardware.
+
 In a cloud environment there is native support for replicating resources and services across several zones and geographical regions.
+
 \subsection{Security}
-It's really important to stay secure, on premise it's feasible but it's important to shovel a lot of cash into security so that we have a good reliable system. This doesn't mean that the company has any kind of assurance, compliance or certification. \n
-A cloud environment comes with an infrastructure compliant to a standard. \\
-\miniSpace
-How do you migrate to the cloud? How much effort does it require? \n
-We can migrate at 5 different levels:
+It's really important to stay secure, on premise it's feasible but it's important to shovel a lot of cash into security so that we have a good reliable system. This doesn't mean that the company has any kind of assurance, compliance or certification. A cloud environment comes with an infrastructure compliant to a standard.
+
+How do you migrate to the cloud? How much effort does it require? How big is the Return of
+Investment (RoI)?
+
+In general we can migrate at 5 different levels:
 \begin{itemize}
     \item Application.
     \item Code.
@@ -65,19 +84,63 @@ We can migrate at 5 different levels:
     \item Architecture.
     \item Usage.
 \end{itemize}
-Migration levels are applied to the different IaaS, PaaS, SaaS levels. \\
-A structured approach migration-oriented is the following:
+Migration levels are applied to the different IaaS, PaaS, SaaS levels. A structured approach migration-oriented is the following:
 \begin{itemize}
-    \item Cloud migration assessment
-    \item Isolate the dependencies
-    \item Map the messaging \& the environment
-    \item Re-architect and implement the lost functionalities
-    \item Leverage cloud functionalities \& features
-    \item Test the migration
-    \item Iterate and optimize
+    \item Cloud migration assessment - analyze the company's behaviour and technologies, come up
+        with a migration strategy.
+    \item Isolate the dependencies and model the migration complexity.
+    \item Map the messaging \& the environment - choose what needs to be migrated and what has to
+        remain local.
+    \item Re-architect and implement the lost functionalities.
+    \item Leverage cloud functionalities \& features.
+    \item Test the migration.
+    \item Iterate and optimize.
 \end{itemize}
-The cloud investment is compensated by the highly available, easily scalable and virtualized service. \n
-The migration is effective if medium costs are lower in the cloud an migration costs do not impact on profits. \n
+The cloud investment is compensated by the highly available, easily scalable and virtualized service. The migration is effective if medium costs are lower in the cloud an migration costs do not impact on profits.
+
+The migration process has to keep in mind a series of factors that are the main reason why the
+services of a company are moved to the cloud:
+\begin{itemize}
+    \item Time management.
+    \item Security.
+    \item Choose the cloud provider.
+    \item Choose the cloud model - choose the appropriate type of cloud infrastructure (PaaS, IaaS,
+        SaaS) and choose the appropriate "type" of cloud (public, private, community or hybrid).
+        These are the first choices necessary, then there must be some non functional requisites
+        that are solved by the cloud infrastructure like latency restrictions, privacy, scalability,
+        etc...
+    \item Understand if the services are ready to be migrated - the most important aspect is that
+        the architecture has to be decoupled, which means that different parts of the application
+        scale independently from each other.
+    \item Allineate the services.
+    \item Cloud-oriented design - This means a bunch of things:
+                        \begin{itemize}
+                            \item Design for failure.
+                            \item Refactoring the application to use microservices.
+                            \item Multi-region implementation.
+                            \item Use services for monitoring.
+                        \end{itemize}
+    \item Migrate also the deployment options.
+    \item Optimization.
+    \item Business continuity - The business continuity implies a bunch of things:
+                \begin{itemize}
+                    \item Design to failure.
+                    \item RTO (Recovery to Objective) metric for service issues.
+                    \item RPO (Recovery Point Objective) metric for data loss.
+                    \item Backup \& restore.
+                    \item Pilot light - minimal set of services separated from everything,
+                        replication of the most important data, scale out during a disaster.
+                    \item Warm standby - a complete version of the system always ready to be
+                        deployed.
+                    \item Multi site.
+                \end{itemize}
+\end{itemize}
+Where does the gain stand for companies using cloud solutions?
+
+The cloud is compensated through the high usage and re-usage of resources that are not being payed
+as much as they should because are being bought in high volumes, furthermore updates of the
+infrastructure are outomated and the application roll-out is way faster.
+
 10 laws have been defined for Cloudonomics:
 \begin{enumerate}
     \item Utility services cost less even though they cost more $\sim$ \textit{The cost for a unit is higher but on demand access to utility reduces the total cost.}
@@ -91,16 +154,29 @@ The migration is effective if medium costs are lower in the cloud an migration c
     \item Don't put all your eggs in one basket
     \item An object at rest tends to stay at rest $\sim$ \textit{Cloud sites are installed where it is more advantageous.}
 \end{enumerate}
-How much does cloud computing cost? A company needs to factor in the costs of a year in the hope that the costs will repay themselves thanks to the QoS, growth also influences the costs. Depending on how the company grows overtime there will be different consts, the patterns are not mutually exclusive. \n
+How much does cloud computing cost? A company needs to factor in the costs of a year in the hope that the costs will repay themselves thanks to the QoS, growth also influences the costs. Depending on how the company grows overtime there will be different consts, the patterns are not mutually exclusive.
+
 A company can have:
 \begin{itemize}
     \item Constant growth: the number of uses grows constantly with time.
     \item Seasonal growth: both growths and shrinkages are expected during the year and usually there is an hotspot during the year.
     \item Lifecycle growth: Companies have high spikes due to, for example, the launch of a new device.
 \end{itemize}
-The essential difference is between permanent patterns and temporary patterns. When the increment is permanent the company has to plan a cyclic expansion of the resource pool, for example every month; when the pattern is temporary the company has to factor in big changes in the amount of resources invested so that they can accomodate the sudden increase in usage. \n
-To understand whether the cloud is a good solution, most providers supplu Total Cost of Ownership comparisons between clouds and traditional IT infrastructures. \n
-The Service Level Agreement is a document that establishes the kind of service the cloud provider will offer to the client, the document contains:
+The essential difference is between permanent patterns and temporary patterns. When the increment is permanent the company has to plan a cyclic expansion of the resource pool, for example every month; when the pattern is temporary the company has to factor in big changes in the amount of resources invested so that they can accomodate the sudden increase in usage.
+
+To understand whether the cloud is a good solution, most providers supply Total Cost of Ownership
+comparisons between clouds and traditional IT infrastructures. To forecast the cost of the cloud
+solution required for a company the general framework is the following:
+\begin{itemize}
+    \item Modelling the required cloude resources.
+    \item Generating a report of costs.
+    \item creating a new pattern.
+    \item Applying the new pattern.
+    \item Generating a new report of costs.
+\end{itemize}
+The Service Level Agreement is a document that establishes the kind of service the cloud provider
+will offer to the client and basically defines the non functional properties of the cloud service
+that will be implemented alongside some more legal clauses:
 \begin{itemize}
     \item Availability of the service.
     \item Response time or latency.
@@ -110,10 +186,14 @@ The Service Level Agreement is a document that establishes the kind of service t
 \end{itemize}
 The license in the cloud is associated with the user account and follows a subscription or usage model. Licensing modes are continuously evolving.
 \section{Cost and licenses}
-The cost of the cloud infrastructure depends on what kind of service I'm requesting. \n
-In the case of IaaS I'm requesting a very low level service and I pay for what I use, thus I pay for the amount of traffic generated, for the number of CPU cycles used and for the amount of storage used. \n
-In the case of SaaS there is a monthly subscription fee and there are tiers of the service. In the case of the Microsoft Office Suite, there is the online and free version, but we have also two different payied versions with more services and features. \n
+The cost of the cloud infrastructure depends on what kind of service I'm requesting.
+
+In the case of IaaS I'm requesting a very low level service and I pay for what I use, thus I pay for the amount of traffic generated, for the number of CPU cycles used and for the amount of storage used.
+
+In the case of SaaS there is a monthly subscription fee and there are tiers of the service. In the case of the Microsoft Office Suite, there is the online and free version, but we have also two different payied versions with more services and features.
+
 In the case of PaaS it's usually a mix of usage and subscription model.
 \section{Comparison among heterogeneous cloud providers}
-The TCO index was developed by Gartner in 1987 and is used to compute all the costs of an IT equipment life cycle, its purchase, installation, management and disposal. \n
-To choose whether to migrate to the cloud and to which provider we can use this TCO index, many cloud providers have their own and perform their calculations differently. \n
+The TCO index was developed by Gartner in 1987 and is used to compute all the costs of an IT equipment life cycle, its purchase, installation, management and disposal.
+
+To choose whether to migrate to the cloud and to which provider we can use this TCO index, many cloud providers have their own and perform their calculations differently.
