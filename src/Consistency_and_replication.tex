@@ -17,10 +17,10 @@ Until now we have talked about consistency models, a consistency model describes
 
 It's interesting to note that ensuring strong consistency is expensive and may only be guaranteed when processes use mechanisms such as transactions and synchronization variables. Therefore we usually offer some watered down guarantees that might be enough for just one of the agents or might hold under particular conditions (like eventual consistency). A couple examples of client-centric (weaker) consistency models are:
 \begin{itemize}
-    \item Monotonic reads - if a process reads a value, that value will either have the same or a newer value.
-    \item Monotonic writes - a write by a process on a value x is completed before any successive write operation on x by the same process. The order of the writes is preserved and FIFO.
-    \item Read your writes - The effect of any write by a process on a value will always be seen by a successive read operation on that value by the same process.
-    \item writes follow reads - A write operation by a process on a value x following a previous read operation on x by the same process is guaranteed to take place on the same or a newer value of x. Therefore any successive write operation by a process on a value x will be performed on a copy of x that is up to date.
+	\item Monotonic reads - if a process reads a value, that value will either have the same or a newer value.
+	\item Monotonic writes - a write by a process on a value x is completed before any successive write operation on x by the same process. The order of the writes is preserved and FIFO.
+	\item Read your writes - The effect of any write by a process on a value will always be seen by a successive read operation on that value by the same process.
+	\item writes follow reads - A write operation by a process on a value x following a previous read operation on x by the same process is guaranteed to take place on the same or a newer value of x. Therefore any successive write operation by a process on a value x will be performed on a copy of x that is up to date.
 \end{itemize}
 Consistency protocols describe an implementation of a specific consistency model.
 
@@ -28,9 +28,9 @@ Now we move to the problem of replication, whenever implementing a replication s
 
 If we take into consideration the standard client-server model we can say that when it comes to replicas we have different types of them:
 \begin{itemize}
-    \item Permanent replica - the initial set.
-    \item Server initiated replica - replicas that exist to enhance perfomance and are created by the server.
-    \item Client initiated replica - client cache.
+	\item Permanent replica - the initial set.
+	\item Server initiated replica - replicas that exist to enhance perfomance and are created by the server.
+	\item Client initiated replica - client cache.
 \end{itemize}
 It's also important to consider how to manage the replication process, should the copies be updated or should they be considered invalid and the owner notified? We have three different approaches to the problem: Propagation only, Passive replication (we transfer data from one copy to another), Active replication (we propagate the update operation to other copies).
 

@@ -1,0 +1,33 @@
+\chapter{Microservices containerization}
+Microservices are a very interesting concept that came to be since 2012 and are essentially vertical
+slices of the architecture, not layers, this means that there is no dependency on state, just
+communication, furthermore each microservice is allowed to scale independently and employ the
+best technological stack to solve the specific problem.
+
+By definition of microservice there are a couple of properties that we can guarantee:
+\begin{itemize}
+	\item Replicability of environments
+	\item Protection by isolation
+	\item Distribution and coexistence
+\end{itemize}
+Containers encapsulate a runtime environment, because of how light the models are, they can be
+initialized and sent into execution at very high speeds therefore achieving a quick response to any
+possible situation. Microservices can be deployed using hardware, virtual machines or containers,
+it depends on the structure of the solution and the non-functional requirements of the project.
+
+\section{Docker}
+Docker is a containerization software that encloses a piece of software in a complete filesystem
+containing everything that is needed to run the software itself. It consists of a registry
+containing images of containers, a daemon which queries the registry to get the image to run in a
+container and the client that communicates with the deamon to take actions.
+
+Docker is based on containers, which contains the running image and anything that is needed to run
+it, has its own IP and exposes: a port to communicate with the outside world, volumes to save your
+data, an ENV section to save and access environmental variables if needed.
+
+Docker has access to a complete toolchain that allows us to manage containers not only via
+dockerfiles but also via YAMLs, as well as manage clusters. To manage clusters Docker swarm it's
+used, which deploys managers and workers and it's controlled through YAML. Managers are central nodes receiving service definitions and distributing work to workers.
+
+Microservices are indispensable for an event driven IT model, containers are the perfect
+virtualization technique to bring the microservice paradigm to life.
