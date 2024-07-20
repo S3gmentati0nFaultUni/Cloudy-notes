@@ -1,0 +1,22 @@
+\chapter{Kubernetes}
+Kubernetes is an open-source project aimed at solving issues related to networking and persistence
+on different Docker hosts. Microservices in the scope of Kubernetes are redefined as one or more
+Docker images inside a single pod, pods have the following advantages:
+\begin{itemize}
+	\item This preserves the benefits of containers for DevOps
+	\item Pods share namespaces such as PID networks etc.
+	\item Pods could also share persistent volumes
+	\item The containers in the Pod are in localhost
+\end{itemize}
+A Kubernetes cluster consists of: a master node that coordinates, the cluster itself, the worker
+nodes. A service is always discoverable internally to the cluster thanks to Kubernetes's DNS
+service, the IP can also be discovered from outside if a valid external IP is assigned to it.
+
+We can trace a parallel between Kubernetes and any Operating system then the Pods are processes,
+Docker is the new apt and containers are new VMs.
+
+If we compare the Kubernetes solution vs the Docker swarm solution we have to keep in mind that:
+Kubernetes is widely used commercially, can operate autoscaling based on the amount of resources
+used and has a very widespread community (it's open source); Docker swarm is very easy to use and is
+included in the Docker Engine suite but it doesn't have a great community to back it up and it does
+not have the same commercial success as Kubernetes.
