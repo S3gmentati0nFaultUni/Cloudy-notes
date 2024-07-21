@@ -50,10 +50,29 @@ services for someone else.
 
 Treat logs as streams.
 
-Seeing how important has the cloud become we now have cloud-based applications, which means that
+Seeing how important has the cloud become we now have cloud-native applications, which means that
 they are applications designed for the cloud and they are run and hosted on the cloud to capitalize
 the cloud peculiarities, cloud-based applications are built using microservice architecture which
 makes it easy to spin them up, shut them down, scale them and it also makes them resilient and
 easily manageable.
 
+The basics of a cloud-native application are:
+\begin{itemize}
+    \item Use loosely coupled cloud services
+    \item Not all services are on the same machine (duh)
+    \item Designed for redundancy
+    \item Fault tolerant
+    \item Communicates through APIs
+\end{itemize}
+APIs are extremely important, a modern API usually adheres to standards, is developer friendly and is easy to access, it's designed to be consumed, documented and versioned and imposes a strict discipline on secuirity and governance. It's also possible to monetize on well developed APIs by selling keys to the services they offer.
 
+The benefits of cloud-native applications are:
+\begin{itemize}
+    \item Cost-effectiveness
+    \item Indepoendency: microservices are isolated and therefore they can scale indpendently from each other
+    \item Portability
+    \item Reliability
+    \item Easy to manage
+    \item Transparency and composabililty
+\end{itemize}
+To allow for a better development process the development should be automated (with build pipelines and whatnot), there should be a strong emphasis on documentation and incremental changes including a lot of testing in extreme conditions (the app must be designed for failure).
