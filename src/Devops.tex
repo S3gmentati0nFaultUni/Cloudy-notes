@@ -1,0 +1,59 @@
+\chapter{DevOps}
+DevOps is a new form of software development that is founded on a series of tools and techniques
+that improve the organization's ability to develop and deploy and service an application quickly and
+efficiently. This new way of developing and supporting software was originated from the sprout of
+programs like Docker that allow to make the CI/CD process a breeze. The DevOps process is founded on
+the following steps:
+\begin{itemize}
+	\item PLAN considering the possibility to do iterations.
+	\item DEVELOP code according to plan.
+	\item BUILD an executable to be verified as soon as new code is available.
+	\item TEST the executables.
+	\item RELEASE the software.
+	\item DEPLOY as a preparation for the production phase.
+	\item verify IN OPERATION environment.
+	\item MONITOR the software and plan improvements.
+\end{itemize}
+This solution is not always the best one, there is a certain point where the virtualization overhead
+is too expensive for the type of application that we are trying to handle, therefore deploying using
+a monolithic approach is a better solution afterall. There is also the derivation of DevOps which is DevSecOps.
+
+The twelve factor is a methodology that pushes for declarative formats for automation and clear
+contracts with the underlying operating system, the result is a focus on cloud deployment and a
+greater ease of use. Docker is the perfect tool for this kind of pourpose.
+
+The following is the A, B, C of twelve factor application development.
+
+A codebase that is connected to a repository and receives constant updates from developers and also
+has access to revision control.
+
+Dependencies need to be declared and isolated, languages that are seeing more and more use in the
+last couple of years like Go and Rust have really great mechanisms to handle dependencies.
+
+Configuration files need to be present to allow handling of sensitive data without the risk of
+having data in the clear, the idea is that if we have a config file and we move the project to open
+source then we do not risk of giving our sensitive data to the users and the users utilizing our
+software will not risk a security breach.
+
+External services need to be interchangeable, there must be no need to change the codebase if a
+certain provider has to change for whatever reason.
+
+Divide the Building and Running steps so that after the building phase the code is ready to be run
+and is basically an empty shell waiting for the final piece of information (the config file) during
+the Running stage the code is then integrated with the config file to make the application
+executable.
+
+Everything should be stateless!!!
+
+Always do port-binding for your own services, the result is that our own services can become backing
+services for someone else.
+
+Treat logs as streams.
+
+Seeing how important has the cloud become we now have cloud-based applications, which means that
+they are applications designed for the cloud and they are run and hosted on the cloud to capitalize
+the cloud peculiarities, cloud-based applications are built using microservice architecture which
+makes it easy to spin them up, shut them down, scale them and it also makes them resilient and
+easily manageable.
+
+
