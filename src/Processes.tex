@@ -1,17 +1,17 @@
 \chapter{Processes}
 Now we will go through a very fast review of the various concepts of computer architectures.
 
-First and foremost we need to remember that all of the resources in a computer are virtualized (we will get back to this concept in another chapter), even computing power is virtualized, in fact we can leverage the power of multiple virtual processors built on top of the physica one to execute programs.
+First and foremost we need to remember that all of the resources in a computer are virtualized (we will get back to this concept in another chapter), even computing power is virtualized, in fact we can leverage the power of multiple virtual processors built on top of the physical one to execute programs.
 
 What is a program? A program is a process in execution in whose context one or more threads (or light processes) can be executed. It's important to keep in mind that Threads are not automatically protected against each other and there needs to be some specific design at application level to make sure that the application works correctly.
 
 Why do we have two different types of processes? Not everyone knows that context switching, the operation of changing the contents of the registers in the Processor, is very heavy and it's done every single time we switch Processes during the computation. Using threads is much easier because it allows us to parallelize computation within the same process and they share the address space for memory access.
 
-Basically having Threads allows us to: avoid waits when doing I/O operations, take advantage of multiprocessor architectures by parallelizing operations and avoid process switching in the context of a single large application. The trade off is that we need to be aware of the fact that programming for parallallelized environment is complex from many points of view.
+Basically having Threads allows us to: avoid waits when doing I/O operations, take advantage of multiprocessor architectures by parallelizing operations and avoid process switching in the context of a single large application. The tradeoff is that we need to be aware of the fact that programming in a concurrent environment is more complex overall.
 
-A very classical example of multithreading is in the client-server communiucation, where the server can be multithreaded to handle multiple requests at the same time and avoiding that some slower one prevents the process from working correctly. Virtualization is a concept which is closely related to the one of processes and multithreading, virtualization deals with extending or replacing an existing interface mimicing the behaviour of another system.
+A very classical example of multithreading is in the client-server communiucation, where the server can be multithreaded to handle multiple requests at the same time and avoiding that some slower one hinders the efficiency of the serving procedure. Virtualization is a concept which is closely related to the one of processes and multithreading, virtualization deals with extending or replacing an existing interface mimicing the behaviour of another system.
 
-Virtualization is, nowadays, a standard; that is because it allows to handle hardware changes with ease because the hardware is virtualized and the interface does not change for the above system. With virtualization also come ease of portability and code migration and isolation of failing or attacked components.
+Virtualization is, nowadays, a standard; that is because it allows to handle hardware changes with ease since the interface of the hardware uses standard interfaces. With virtualization also come ease of portability and code migration and isolation of failing or attacked components.
 
 There are different ways to do virtualization, a couple of interfaces to be virtualized are the following:
 \begin{itemize}
