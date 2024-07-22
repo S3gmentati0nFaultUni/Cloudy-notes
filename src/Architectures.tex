@@ -21,24 +21,24 @@ The structure of a layered architecture is usually the following:
 \end{itemize}
 
 \section{Object oriented architecture}
-The components in an object oriented architecture are objects connected to each other through procedure calls, the calls can be distributed if the objects are on different machines. This architectural style employs Encapsulation by using objects to hide the internal representation implementation and offering an interface (a set of methods) to interact with the object.
+The components in an object oriented architecture are objects connected to each other through procedure calls, the calls can be distributed if the objects are on different machines. This architectural style employs Encapsulation by using objects to hide the internal representation while offering an interface (a set of methods) to interact with the object.
 
-When working with an Object oriented architecture we might have a remote object and a local interface to interact with it, the associated mechanism is the marshal and unmarshal of messages and RPC (Remote Procedure Call); the skeleton allows us to map the method of the interface to the method implemented on the object. In this case the object state is not distributed because it resides on a single machine but the object's methods can be called from a remote machine and are distributed.
+When working with an Object oriented architecture we might have a remote object and a local interface to interact with it, the associated mechanism is the marshalling and unmarshalling of messages and RPC (Remote Procedure Call); the skeleton allows us to map the method of the interface to the method implemented on the object. In this case the object state is not distributed because it resides on a single machine but the object's methods can be called from a remote machine and are distributed.
 
 By composing different services we can construct the so called Service Oriented Architecture or SOA.
 
-\section{Resource base architectures}
+\section{Resource based architectures}
 A REST architecture is focused on resources and their indexing. Usually we have an interface that exposes a series of methods that allow us to interact with them (Retrieval, Removal, Upload and Modification). In a REST architecture:
 \begin{itemize}
     \item Resources are identified through a single naming scheme
     \item All services offer the same interface
-    \item Messages sent to or from service are fully self-described
+    \item Messages sent to or from service are fully contained, no need for state
     \item The communication is stateless
     \item The operations we can do with resources are a few and are standard.
 \end{itemize}
 
 \section{Publish-subscribe architecture}
-A publish-subscribe architecture is a classical architecture in which a bunch of autonomous processes or agents are connected to a broker or a publisher and they get notified every time something interesting happens. In this archetipe dependencies between processes become as loose as possible and there is a strong separation betweeen processing and coordination.
+A publish-subscribe architecture is a classical architecture in which a bunch of autonomous processes or agents are connected to a broker or a publisher and they get notified every time something interesting happens. When working with this architecture dependencies between processes become as loose as possible and there is a strong separation betweeen processing and coordination.
 
 Publish-subscribe implementations can be further subdivided based on two concepts:
 \begin{itemize}
@@ -54,12 +54,12 @@ The publish-subscribe architecture can be implemented in the following ways:
 \end{itemize}
 In a shared data space we use tuple communication, which means that we have a database that allows us to store tuples and we can access them concurrently without problems. We can combine this implementation with an event-based coordination and we can basically have subscribers scan the repository for certain tuple patterns, once a publisher loads a tuple to the data space all the interested subscribers are notified. This is very interesting because it allows us to have up to date subscribers without the need for a direct link between them and the publisher.
 
-Communication takes place by describing events, which are a collection of attributes, the publish operations creates a notification describing an event when it's made available for other processes to read. A subscription for the subscriber needs to be passed to the Middleware containing a description of the event (tuple) that the subscriber is interested in. The middleware can have storage functionality (storing both the notification and the data) or not (storing the notification only).
+Communication takes place by describing events, which are a collection of attributes, the publish operations create a notification describing an event when it's made available for other processes to read. A subscription for the subscriber needs to be passed to the Middleware containing a description of the event (tuple) that the subscriber is interested in. The middleware can have storage functionality (storing both the notification and the data) or not (storing the notification only).
 
 \subsection{Middleware organization}
 The middleware is implemented in publish-subscribe architectures using two extremely important design patterns.
 
-The wrapper or adapter allows the middleware to interact with any component of the distributed system, allowing even for legacy systems backwards compatibility.
+The wrapper or adapter allows the middleware to interact with any component of the distributed system, allowing even legacy systems backwards compatibility.
 
 The interceptor is a software construct that will break the usual flow of control and allow other (application specific) code to be executed. The interceptor can be Reuqest-level (transforms the call into an invocation) or Message-level (assists in transferring the invocation to the target).
 
@@ -79,7 +79,7 @@ In peer-to-peer systems each node of the network is considered on the same level
     \item Unstructured: In which we have an ad-hoc list of neighbours, to search data we can either flood the network or do a random walk.
     \item Hierarchically organized: We have a super peer which acts like an orchestrator, an index server and brokers to decide where to store data. An example of this is a Content Delivery Network.
 \end{itemize}
-Like with everything it's not always either black or white, we have hybrid architectures in which we combine a decentralized architecture with the client-server archetipe.
+Like with everything it's not black or white, we have hybrid architectures in which we combine a decentralized architecture with the centralized client-server model.
 
 An example of hybrid architecture is the \textbf{Edge-server architecture} which uses client-server to manage the connection between private networks placed outside of internet's bounds and use an orchestrator or an edge server to communicate with the world.
 
@@ -93,9 +93,9 @@ Another example are collaborative distributed systems like Emule, bitTorrent, et
 \section{IoT architecture}
 Internet of Things is the new frontier of computation that we are willing to achieve, the idea is to be always connected to a network of devices that communicate with each other and are, in a way, aware of their surroundings. There is a reason if IoT is still not part of our daily lives.
 
-This technology aims to connect many devices that are extremely heterogeneous and that have different capabilities and logics creating an integrated, reliable, efficient and cost-effective solution; furthermore it would have a set of heterogeneous, physically accessible and low cost sensors, fully connected and with few or no protections (with acess to our personal data).
+This technology aims to connect an enormous amount of very heterogeneous devices creating an integrated, reliable, efficient and cost-effective solution.
 
-The building blocks of an IoT architecture are:
+The building blocks of the IoT architecture are:
 \begin{itemize}
     \item Sensing layer - The things located in space interact with a series of sensors (systems that can collect data) and actuators (systems that can turn signals into actions) to sense the environment around them and gather information.
     \item Acquisition layer - a set of gateways and data acquisition systems that can collect huge amounts of unprocessed data, convert it into digital streams and pre-process them to pass them upstream in order to start the analysis.
