@@ -14,7 +14,7 @@ Accompanying the concepts of reliability and availability we have a series of me
     \item Mean time to repair (MTTR) - average time to repair a failed component.
     \item Mean time between failures (MTBF) - MTTF + MTTR.
 \end{itemize}
-The availability is computed as $\frac{MMTF}{MTBF}$.
+The availability is computed as $\frac{MTTF}{MTBF}$.
 
 Reliability and availability make sense only if we have an accurate notion of what a failure is: a failure is a component not living up to its specifications, an error is part of a component that can lead to a failure (e.g. a bug) and a fault is the cause of an error. To handle faults we have so many different approaches, some of the most common are:
 \begin{itemize}
@@ -57,6 +57,6 @@ Following everything we have said up to this point we have to name the CAP (Cons
 \end{itemize}
 Everything we said up to this point is interesting but, since our systems are unreliable by definition, in order to properly mask failures we first need to detect them, a classical way of doing that is the Heartbeat system, which is a simple way (still not entirely reliable) to detect if a component is still alive.
 
-When talking about Process groups we can say that group communication is reliable when it can be guaranteed that a message is received ans subsequently deliveredy by all nonfaulty group members and we can say that an operation is either performed by each member of the process group (and therefore we have consensus about the operation) or by none of them. That is why in this field we usually employ distributed transactions and reliable multicasting systems.
+When talking about Process groups we can say that group communication is reliable when it can be guaranteed that a message is received and subsequently deliveredy by all nonfaulty group members and we can say that an operation is either performed by each member of the process group (and therefore we have consensus about the operation) or by none of them. That is why in this field we usually employ distributed transactions and reliable multicasting systems.
 
 Finally, we can have the most reliable system in the world, but when something does break it just breaks, that is why we need to be able to recover to a correct state, a classic way of recovering is by creating checkpoints (with backup systems off site and / or in site) and message logging.
