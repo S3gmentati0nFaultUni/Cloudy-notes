@@ -1,9 +1,9 @@
 \chapter{Consistency and Replication}
-To make a system more reliable and enhance performance usually data is replicated, it's pretty easy to see that the replication procedure creates a couple of very important issues, first and foremost the consisteny of the data, we may have different copies of the same resource inside the network and not all of them might contain the same information. Secondly we must consider the fact that we might have conflicts while handling operations (read-write and write-write conflicts).
+To make a system more reliable and enhance performance usually data is replicated, it's pretty easy to see that the replication procedure creates a couple of very important issues, first and foremost the consistency of the data, we may have different copies of the same resource inside the network and not all of them might contain the same information. Secondly we must consider the fact that we might have conflicts while handling operations (read-write and write-write conflicts).
 
-To these issues we might use Data-centric consistency models, the idea is that we have a contract between data store and processes in which the data store specifies precisely what the result of read and write operations are in the presence of concurrency.
+To solve these issues we might use Data-centric consistency models, the idea is that we have a contract between data store and processes in which the data store specifies precisely what the result of read and write operations are in the presence of concurrency.
 
-If we want to grant continuous consistency we want first to define a degree of consistency that we want to maintain, for example: replicas may differ in their numerical value or replicas may differ in their relative staleness. To define consistency more formally the consistency unit (conit) was created and it specifies the data unit over which consistency is to be measured.
+If we want to grant continuous consistency we need to define an achieved degree of consistency, for example: replicas may differ in their numerical value or replicas may differ in their relative staleness. To define consistency more formally the consistency unit (conit) was created and it specifies the data unit over which consistency is to be measured.
 
 To solve the operational conflicts we introduce consistent ordering of operations, which can be sequential or causal.
 
@@ -13,7 +13,7 @@ When using causal consistncy all the writes that are potentially causally relate
 
 Another really interesting technique to make operations consistent is the use of grouping, we don't care that the individual results are immediately known to other processes. We care that the effect of a series of them is known though. This makes the access to locks sequentially consistent.
 
-Until now we have talked about consistency models, a consistency model describes what can be expected with respect to that set when multiple processes operate on the same data. Coherence is a property, linked to consistency, that describes what can be expected to hold for only a single data item, if we consider data item replicated it is coherent if the replications abide to the rules of the consistency model. There is also a theorem that states that: if no updates take place for a long time all replicas will gradually become consistent (Eventual consistency).
+Until now we have talked about consistency models, a consistency model describes what can be expected with respect to that set when multiple processes operate on the same data. Coherence is a property, linked to consistency, that describes what can be expected to hold for only a single data item, a replicated data item is coherent if the replications abide to the rules of the consistency model. There is also a theorem that states that: if no updates take place for a long time all replicas will gradually become consistent (Eventual consistency).
 
 It's interesting to note that ensuring strong consistency is expensive and may only be guaranteed when processes use mechanisms such as transactions and synchronization variables. Therefore we usually offer some watered down guarantees that might be enough for just one of the agents or might hold under particular conditions (like eventual consistency). A couple examples of client-centric (weaker) consistency models are:
 \begin{itemize}
