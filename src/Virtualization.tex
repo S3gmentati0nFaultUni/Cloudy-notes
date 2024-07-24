@@ -4,14 +4,14 @@ In this chapter we will be talking about virtualization, which is an activity ai
 Virtualization, emulation and simulation are similar concepts that hide very important differences, we will be exploring them in the following.
 \begin{itemize}
     \item Emulation: We use a system to execute another operating system (the concept can also be downscaled to APIs and single functions) that was not developed for the specific machine.
-    
+
     Emulation can be really helpful because we can use it to run old operating systems on different hardware platforms or we can use it to read from memorization devices that we no longer have or no longer work.
     \item Simulation: An application allowing to execute old programs defined for different platforms on modern machines and it replicates the behaviour of a system. It's like a software emulation.
 
     Emulation is slower but precise while simulation is fast but less precise. We use simulation (or software emulation) to run old games on our smartphones.
     \item High level emulation is an intermediate between emulation and simulation, they recreate the functionalities of an emulated system using similar or equivalent functions in the emulating system. Since is an intermediate level between emulation and simulation it's slower than simulation but faster than emulation.
     \item Virtualization: the technique for using resources and devices in a functional way without considering their physical layout.
-    
+
     In the world of virtualization a Virtual Machine is a container with software based CPU, RAM and HDD and network connection. We have a certain level of transparency because an OS or an application do not distinguish between a virtual and a physical machine.
 \end{itemize}
 \begin{figure}
@@ -44,7 +44,7 @@ Other reasons that support the choice of going virtualized are the following:
     \item Better performance
     \item transparency
     \item Heterogeneity
-    \item portability
+    \item Portability
     \item Interoperability
     \item Green IT (with the same amount of hardware we satisfy more people)
 \end{itemize}
@@ -57,7 +57,7 @@ As a last example we can use virtualization to keep our systems secure, with a v
 A couple of reasons against virtualization are the follwing:
 \begin{itemize}
     \item Analysis and planning: building an application or a service that stands on top of a virtualized environment is easy enough, porting something to a virtualized environment a completely different workflow. A lot of planning and study has to go into the process, the staff needs to be trained and a lot of risk analysis has to be done.
-    \item Adaptation and post adaptation: A lof of evaluation needs to go into studying the relaiability, the performance, the efficiency and the security of the virtualized environment that will be used.
+    \item Adaptation and post adaptation: A lot of evaluation needs to go into studying the relaiability, the performance, the efficiency and the security of the virtualized environment that will be used.
     \item Maintenance: Maintenance must be kept in mind as well, mostly scalability and security.
 \end{itemize}
 \begin{figure}
@@ -152,7 +152,7 @@ Xen's hypervisor is inserted between the hardware and the OS, there is very low 
     \item Offers separation between hypervision execution and OS stack management.
     \item Has interchangeable components.
     \item Offers string isolation between components.
-\end{itemize} 
+\end{itemize}
 \subsection{KVM}
 KVM is a full virtualization solution for Linux on x86 hardware, it's based on extensions supporting virtualization and can execute unmodified Linux or Windows images.
 
